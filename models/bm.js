@@ -9,20 +9,36 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
     type: {
-      type: DataTypes.ENUM("solid", "normal", "liquid"),
+      type: DataTypes.STRING,
+      validate: {
+        isIn: ["solid", "normal", "liquid"],
+      },
       allowNull: false,
+      defaultValue: "normal",
     },
     amount: {
-      type: DataTypes.ENUM("little", "normal", "a lot"),
+      type: DataTypes.STRING,
+      validate: {
+        isIn: ["little", "normal", "a lot"],
+      },
       allowNull: false,
+      defaultValue: "normal",
     },
     speed: {
-      type: DataTypes.ENUM("slow", "normal", "fast"),
+      type: DataTypes.STRING,
+      validate: {
+        isIn: ["slow", "normal", "fast"],
+      },
       allowNull: false,
+      defaultValue: "normal",
     },
     comfort: {
-      type: DataTypes.ENUM("sad", "normal", "good"),
+      type: DataTypes.STRING,
+      validate: {
+        isIn: ["sad", "normal", "good"],
+      },
       allowNull: false,
+      defaultValue: "normal",
     },
   });
 };
