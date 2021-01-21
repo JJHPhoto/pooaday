@@ -28,7 +28,10 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach(function (file) {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
+  const model = require(path.join(__dirname, file))(
+      sequelize,
+      Sequelize.DataTypes
+    );
   });
 
 Object.keys(db).forEach(function (modelName) {
