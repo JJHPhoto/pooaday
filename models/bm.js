@@ -41,4 +41,13 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: "normal",
     },
   });
+
+  BM.associate = function (models) {
+    BM.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
+  return BM;
 };
