@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use(routes);
+// app.use(routes);
 
 db.sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
