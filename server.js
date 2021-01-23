@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-app.use(authRoutes, htmlRoutes);
+// app.use(authRoutes, htmlRoutes);
 
 
 db.sequelize.sync({ force: true }).then(() => {
