@@ -17,6 +17,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 app.use(htmlRoutes, bmRoutes);
+//switch to this once we get all our routes working
+// app.use(require("./routes"));
 
 db.sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
