@@ -32,6 +32,9 @@ fs.readdirSync(__dirname)
       sequelize,
       Sequelize.DataTypes
     );
+    console.log(model);
+    //new line that we forgot to copy over
+    db[model.name] = model;
   });
 
 Object.keys(db).forEach(function (modelName) {

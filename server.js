@@ -11,7 +11,6 @@ const htmlRoutes = require("./routes/html-routes");
 const bmRoutes = require("./routes/bm-route");
 const apiRoutes = require("./routes/api-route");
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
