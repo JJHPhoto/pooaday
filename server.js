@@ -2,7 +2,7 @@ const express = require("express");
 // const sessions = require("express-session");
 const exphbs = require("express-handlebars");
 
-const passport = require("./config/passport");
+// const passport = require("./config/passport");
 
 const PORT = process.env.PORT || 8080;
 const db = require("./models");

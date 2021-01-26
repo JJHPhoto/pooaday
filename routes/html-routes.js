@@ -1,4 +1,5 @@
-const path = require("path");
+// const path = require("path");
+//commented out till we use, if we use.
 
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 

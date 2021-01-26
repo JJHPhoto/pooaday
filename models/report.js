@@ -1,6 +1,5 @@
-module.exports = function(sequelize, DataTypes) {
-    const Report = sequelize.define("Report", {
+// module.exports = function(sequelize, DataTypes) {
+//     const Report = sequelize.define("Report", {
 
-
-    })
-}
+//     })
+// }
