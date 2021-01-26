@@ -2,7 +2,7 @@ const express = require("express");
 // const sessions = require("express-session");
 const exphbs = require("express-handlebars");
 
-const passport = require("./config/passport");
+// const passport = require("./config/passport");
 
 const PORT = process.env.PORT || 8080;
 const db = require("./models");
@@ -17,6 +17,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 app.use(htmlRoutes, bmRoutes);
+//switch to this once we get all our routes working
+// app.use(require("./routes"));
 
 db.sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
