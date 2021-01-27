@@ -12,7 +12,7 @@ router.get("/api/bm", isAuthenticated, (req, res) => {
   });
 });
 
-router.post("/api/bm/", isAuthenticated, (req, res) => {
+router.post("/api/bm", isAuthenticated, (req, res) => {
   BM.create({
     date: req.body.date,
     time: req.body.time,
