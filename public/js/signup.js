@@ -25,7 +25,7 @@ $(document).ready(() => {
     passwordInput.val("");
   });
 
-  function signUpUser(email, password, name) {
+  function signUpUser(name, email, password) {
     $.post("/api/signup", {
       name: name,
       email: email,
