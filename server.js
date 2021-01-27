@@ -5,7 +5,7 @@ const app = express();
 
 const passport = require("./config/passport");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8181;
 const db = require("./models");
 
 
@@ -16,14 +16,12 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+	session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(require("./routes"));
-
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
@@ -33,4 +31,5 @@ db.sequelize.sync().then(() => {
       PORT
     );
   });
+
 });
