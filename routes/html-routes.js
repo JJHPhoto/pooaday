@@ -26,7 +26,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/members", isAuthenticated, (req, res) => {
-  
+ 
   res.render("members");
 });
 
