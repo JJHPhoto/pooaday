@@ -8,19 +8,23 @@ body {
 
 	line-height: 54px;
 }
-
+#cover-caption {
+	background: transparent;
+}
 .btnIcons {
 	width: 24px;
 	height: 24px;
 }
 .custom {
 	background-color: transparent;
+	mix-blend-mode: normal;
 }
 .customBtn:hover {
-	background-color: violet;
+	/* background-color: violet; */
 	/* cursor: pointer; */
-	/* mix-blend-mode: color-burn; */
+	mix-blend-mode: color-burn !important;
 }
+
 .customMY {
 	/* mix-blend-mode: color-burn; */
 	/* this changing text-color only  */
@@ -36,3 +40,9 @@ body {
 	display: none;
 	/* makes checkbox goaway */
 }
+/* Small devices (landscape phones, 544px and up)
+@media (min-width: 544px) {
+	.loginLogo {
+		font-size: 2rem !important;
+	}
+} */
