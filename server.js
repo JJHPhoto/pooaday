@@ -5,7 +5,7 @@ const app = express();
 
 const passport = require("./config/passport");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8181;
 const db = require("./models");
 // const htmlRoutes = require("./routes/html-routes");
 // const bmRoutes = require("./routes/bm-route");
@@ -18,7 +18,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+	session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
 
 app.use(passport.initialize());
@@ -33,11 +33,11 @@ app.use(require("./routes"));
 // require("./routes").forEach(app);
 
 db.sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
+	app.listen(PORT, () => {
+		console.log(
+			"==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+			PORT,
+			PORT
+		);
+	});
 });

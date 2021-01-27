@@ -1,221 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>🧻 POOADAY</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css"
+		/>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+
+		<!-- timepicker  -->
+		<script
+			src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
+			type="text/javascript"
+		></script>
 		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+			href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
 			rel="stylesheet"
-			integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-			crossorigin="anonymous"
+			type="text/css"
 		/>
-		<link rel="stylesheet" href="style.css" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<!--  -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+		/>
+
 		<link rel="preconnect" href="https://fonts.gstatic.com" />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap"
 			rel="stylesheet"
 		/>
+		<link rel="stylesheet" href="./stylesheets/style.css" />
 		<script
 			defer
 			src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"
 		></script>
-
+		<script defer type="text/javascript" src="./js/members.js"></script>
 		<title>POOADAY</title>
 	</head>
 	<body>
-		<!-- navbar -->
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="container-fluid">
+		<div class="container-fluid px-0">
+			<!-- navbar -->
+			<nav class="navbar navbar-expand-sm navbar-light">
+				<img
+					src="../public/img/toilet-paper-solid.svg"
+					width="30"
+					height="30"
+					class="d-inline-block align-top"
+					alt=""
+				/>
+				<a class="navbar-brand" href="#"> &nbsp;&nbsp;pooaday</a>
+
 				<button
 					class="navbar-toggler"
 					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarTogglerDemo01"
-					aria-controls="navbarTogglerDemo01"
+					data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
 					aria-expanded="false"
 					aria-label="Toggle navigation"
 				>
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-					<a class="navbar-brand" href="#">POOADAY</a>
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">about</a>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Home </a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#"
-								>option1</a
-							>
+							<a class="nav-link" href="#">Link</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="/logout"
-								>logout
-							</a>
-						</li>
+						<li class="nav-item"><a class="nav-link" href="#">report</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">logout</a></li>
 					</ul>
-					<!-- search button -->
-					<form class="d-flex">
-						<button class="btn btn-outline-success" type="submit">
-							Search
-						</button>
-					</form>
+					<!-- date picker added -->
+
+					<input id="datepicker" width="250" placeholder="change date" />
 				</div>
-				<!-- toggle button need to change it to calender/date picker -->
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarTogglerDemo01"
-					aria-controls="navbarTogglerDemo01"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
+			</nav>
+			<!-- user name display -->
+			<h6 class="text-center">hello, <span class="member-name"> </span></h6>
+			<!-- date display // need to add display:none // for picked date  -->
+			<p class="h3 text-center" id="date-display"></p>
+			<!-- change date when it is picked from date picker -->
+			<p id="pickedDate" class="h3 text-center">Not set yet</p>
+			<p class="text-center">
+				<i class="fas fa-poop"></i> my bowel movements for
+				<span> "date picked"</span>
+			</p>
+
+			<!-- when user enter new bm, each timestamp shown here  -->
+			<!-- bm form -->
+			<!-- remove this for mobile?????? -->
+			<div class="container">
+				<div class="accordion" id="accordionMain">
+					<!-- 1. time-->
+					<div class="card custom">
+						<div class="card-header" id="headingOne">
+							<h2 class="mb-0">
+								<button
+									class="btn text-dark btn-block customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseOne"
+									aria-expanded="true"
+									aria-controls="collapseOne"
+								>
+									time
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseOne"
+							class="collapse show"
+							aria-labelledby="headingOne"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body text-center justify-content-center">
+								<p>adjust time</p>
+								<!-- time picker -->
+								<div class="timepicker">
+									<input id="timepicker" width="270" placeholder="" />
+								</div>
+								<!-- <input id="timepicker" width="276" /> -->
+
+								<span>
+									<button
+										type="button"
+										class="btn btn-sm btn-outline-secondary"
+									>
+										+ add new
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- 2. style -->
+					<div class="card custom">
+						<div class="card-header" id="headingTwo">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseTwo"
+									aria-expanded="true"
+									aria-controls="collapseTwo"
+								>
+									style
+								</button>
+							</h2>
+						</div>
+						<div
+							id="collapseTwo"
+							class="collapse"
+							aria-labelledby="headingTwo"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- ranger slider -->
+								<!-- default value is 3 (okay) -->
+								<div class="style-range">
+									<label for="styleRange"></label>
+
+									<input
+										type="range"
+										class="form-control-range"
+										id="styleRange"
+										min="1"
+										max="5"
+										value="1"
+									/>
+									<div class="row speedText">
+										<div class="col">liquid</div>
+										<div class="col text-center">normal</div>
+										<div class="col text-right">solid</div>
+									</div>
+									<div id="resultStyle" class="text-center">
+										Current Value: <b></b>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 3. amount -->
+					<div class="card custom">
+						<div class="card-header" id="headingThree">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseThree"
+									aria-expanded="true"
+									aria-controls="collapseThree"
+								>
+									amount
+								</button>
+							</h2>
+						</div>
+						<div
+							id="collapseThree"
+							class="collapse"
+							aria-labelledby="headingThree"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- amount range input -->
+								<!-- default value is 2 (normal) -->
+								<div class="amount-range">
+									<label for="amountRange"></label>
+
+									<input
+										type="range"
+										class="form-control-range"
+										id="amountRange"
+										min="1"
+										max="3"
+										value="1"
+									/>
+									<div class="row speedText">
+										<div class="col">little</div>
+										<div class="col text-center">normal</div>
+										<div class="col text-right">a lot</div>
+									</div>
+
+									<div id="resultAmount" class="text-center">
+										Current Value: <b></b>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 4. speed  -->
+					<div class="card custom">
+						<div class="card-header" id="headingFour">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseFour"
+									aria-expanded="false"
+									aria-controls="collapseFour"
+								>
+									speed
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseFour"
+							class="collapse show"
+							aria-labelledby="headingFour"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- range slider -->
+								<!-- default value is 2 (between 5-10min) -->
+
+								<div class="speed-range">
+									<!-- <form> -->
+									<label for="speedRange">speed range</label>
+									<!-- <input type="range" class="custom-range" id="customRange" min="1" max="5" value="1"> -->
+									<input
+										type="range"
+										class="form-control-range"
+										id="speedRange"
+										min="1"
+										max="3"
+										value="1"
+									/>
+									<!-- </form> -->
+									<!-- speed text // need to change text for small screen  -->
+									<div class="row speedText">
+										<div class="col">less than 5 mins</div>
+										<div class="col text-center">5 - 10 mins</div>
+										<div class="col text-right">more than 10 mins</div>
+									</div>
+									<div id="resultSpeed" class="text-center">
+										Current Value: <b></b>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 5. comfort level -->
+					<div class="card custom">
+						<div class="card-header" id="headingFive">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseFive"
+									aria-expanded="true"
+									aria-controls="collapseFive"
+								>
+									comfort level
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseFive"
+							class="collapse show"
+							aria-labelledby="headingFive"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body" id="comfortRating">
+								<!-- emoji radio select   -->
+								<!-- default value is 3 (okay) -->
+								<div class="row">
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="comfortVeryUnhappy"
+											value="1"
+										/>
+										<label class="form-check-label" for="comfortVeryUnhappy"
+											><i class="bi bi-emoji-frown" style="font-size: 2rem"></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="comfortUnhappy"
+											value="2"
+										/>
+										<label class="form-check-label" for="comfortUnhappy"
+											><i
+												class="bi bi-emoji-expressionless"
+												style="font-size: 2rem"
+											></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="comfortOkay"
+											value="3"
+										/>
+										<label class="form-check-label" for="comfortOkay"
+											><i
+												class="bi bi-emoji-neutral"
+												style="font-size: 2rem"
+											></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="comfortHappy"
+											value="4"
+										/>
+										<label class="form-check-label" for="comfortHappy"
+											><i class="bi bi-emoji-smile" style="font-size: 2rem"></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="comfortVeryHappy"
+											value="5"
+										/>
+										<label class="form-check-label" for="comfortVeryHappy">
+											<i
+												class="bi bi-emoji-sunglasses"
+												style="font-size: 2rem"
+											></i
+										></label>
+									</div>
+								</div>
+
+								<p class="text-center" id="resultComfort"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- edit / add buttons  -->
+				<div class="btn-group btnGroup">
+					<button
+						type="submit"
+						id="edit-btn"
+						class="btn text-dark form-control custom"
+					>
+						<span>
+							<img
+								class="btnIcons"
+								src="../public/img/edit-regular.svg"
+								alt="edit-icon"
+							/>
+						</span>
+						edit my day
+					</button>
+					<button
+						type="submit"
+						id="add-btn"
+						class="btn text-dark form-control custom"
+					>
+						<span
+							><img
+								class="btnIcons"
+								src="../public/img/plus-solid.svg"
+								alt="add-icon"
+						/></span>
+						add my day
+					</button>
+				</div>
 			</div>
-		</nav>
-
-		<div class="jumbotron">
-			<h1 class="display-4 text-center">today's date</h1>
-			<h4 class="text-center">my bowel movements</h4>
+			<footer>
+				<p class="text-center">made with <i class="bi bi-heart"></i> by pod1</p>
+			</footer>
 		</div>
-
-		<div class="container-fluid">
-			<div class="accordion" id="accordionExample">
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingOne">
-						<button
-							class="accordion-button"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseOne"
-							aria-expanded="true"
-							aria-controls="collapseOne"
-						>
-							time
-						</button>
-					</h2>
-					<div
-						id="collapseOne"
-						class="accordion-collapse collapse show"
-						aria-labelledby="headingOne"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">adjust time</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingTwo">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseTwo"
-							aria-expanded="false"
-							aria-controls="collapseTwo"
-						>
-							style
-						</button>
-					</h2>
-					<div
-						id="collapseTwo"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingTwo"
-						data-bs-parent="#accordionExample"
-					>
-						
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingThree">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseThree"
-							aria-expanded="false"
-							aria-controls="collapseThree"
-						>
-							amount
-						</button>
-					</h2>
-					<div
-						id="collapseThree"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingThree"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">
-							
-						</div>
-					</div>
-				</div>
-
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingFour">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseFour"
-							aria-expanded="false"
-							aria-controls="collapseThree"
-						>
-							speed
-						</button>
-					</h2>
-					<div
-						id="collapseFour"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingFour"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">
-						
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingFive">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseFive"
-							aria-expanded="false"
-							aria-controls="collapseFive"
-						>
-							comfort
-						</button>
-					</h2>
-					<div
-						id="collapseFive"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingFive"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<script
-			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-			integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-			integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
-			crossorigin="anonymous"
-		></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/mybowel.js"></script>
 	</body>
 </html>
