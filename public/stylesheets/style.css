@@ -8,7 +8,9 @@ body {
 
 	line-height: 54px;
 }
-
+#cover-caption {
+	background: transparent;
+}
 .btnIcons {
 	width: 24px;
 	height: 24px;
@@ -38,3 +40,9 @@ body {
 	display: none;
 	/* makes checkbox goaway */
 }
+/* Small devices (landscape phones, 544px and up)
+@media (min-width: 544px) {
+	.loginLogo {
+		font-size: 2rem !important;
+	}
+} */
