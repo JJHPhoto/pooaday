@@ -1,273 +1,513 @@
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="container-fluid">
+
+		<div class="container-fluid px-0">
+			<!-- navbar -->
+			<nav class="navbar navbar-expand-sm navbar-light">
+				
+				<i class="fas fa-toilet-paper" style="font-size: 1.5rem;"></i>
+
+				<a class="navbar-brand" href="#"> &nbsp;&nbsp;pooaday</a>
+
 				<button
 					class="navbar-toggler"
 					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarTogglerDemo01"
-					aria-controls="navbarTogglerDemo01"
+					data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
 					aria-expanded="false"
 					aria-label="Toggle navigation"
 				>
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-					<a class="navbar-brand" href="#">POOADAY</a>
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">about</a>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="/members">Home </a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#"
-								>option1</a
-							>
+							<a class="nav-link" href="/bm">my bowel</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="/logout"
-								>logout
-							</a>
-						</li>
+						<li class="nav-item"><a class="nav-link" href="#">report</a></li>
+						<li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
 					</ul>
-					<!-- search button -->
-					<form class="d-flex">
-						<button class="btn btn-outline-success" type="submit">
-							Search
-						</button>
-					</form>
+					<!-- date picker added -->
+					<input id="datepicker" width="250" placeholder="change date" />
 				</div>
-				<!-- toggle button need to change it to calender/date picker -->
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarTogglerDemo01"
-					aria-controls="navbarTogglerDemo01"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-			</div>
-		</nav>
-
-		<div class="jumbotron">
+			</nav>
+			<!-- user name display -->
+			<h6 class="text-center">hello, <span class="member-name"> </span></h6>
+			<!-- date display // need to add display:none // for picked date  -->
 			<p class="h3 text-center" id="date-display"></p>
+			<!-- change date when it is picked from date picker -->
+			<p id="pickedDate" class="h3 text-center">Not set yet</p>
 
-			<h5 class="text-center">hello, <span class="member-name"> </span></h5>
-		</div>
+			<!-- main form -->
+			<!-- remove this for mobile?????? -->
+			<div class="container">
+				<div class="accordion" id="accordionMain">
+					<!-- 1. my bowel movements -->
+					<div class="card custom">
+						<div class="card-header" id="headingOne">
+							<h2 class="mb-0">
+								<button
+									class="btn text-dark btn-block customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseOne"
+									aria-expanded="true"
+									aria-controls="collapseOne"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/poop-solid.svg"
+											alt="poop-icon"
+									/></span>
+									my bowel movements
+								</button>
+							</h2>
+						</div>
 
-		<div class="container-fluid">
-			<div class="accordion" id="accordionExample">
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingOne">
-						<button
-							class="accordion-button"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseOne"
-							aria-expanded="true"
-							aria-controls="collapseOne"
+						<div
+							id="collapseOne"
+							class="collapse show"
+							aria-labelledby="headingOne"
+							data-parent="#accordionMain"
 						>
-							my bowel movements
-						</button>
-					</h2>
-					<div
-						id="collapseOne"
-						class="accordion-collapse collapse show"
-						aria-labelledby="headingOne"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">1 bowel movement</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingTwo">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseTwo"
-							aria-expanded="false"
-							aria-controls="collapseTwo"
-						>
-							my mood
-						</button>
-					</h2>
-					<div
-						id="collapseTwo"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingTwo"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">
-							<div class="moodicons"></div>
+							<div class="card-body text-center">
+								<!-- display number of today's bowelmovent from database  -->
+								1 bowel movement&nbsp;&nbsp;
+								<span>
+									<a
+										class="btn btn-outline-secondary btn-sm"
+										href="/bm"
+										role="button"
+										>+ add new</a
+									>
+								</span>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingThree">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseThree"
-							aria-expanded="false"
-							aria-controls="collapseThree"
-						>
-							water intake
-						</button>
-					</h2>
-					<div
-						id="collapseThree"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingThree"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">
-							<strong>This is the third item's accordion body.</strong> It is
-							hidden by default, until the collapse plugin adds the appropriate
-							classes that we use to style each element. These classes control
-							the overall appearance, as well as the showing and hiding via CSS
-							transitions. You can modify any of this with custom CSS or
-							overriding our default variables. It's also worth noting that just
-							about any HTML can go within the <code>.accordion-body</code>,
-							though the transition does limit overflow.
+					<!-- 2. my mood -->
+					<div class="card custom">
+						<div class="card-header" id="headingTwo">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseTwo"
+									aria-expanded="true"
+									aria-controls="collapseTwo"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/smile-regular.svg"
+											alt="smile-icon"
+									/></span>
+									my mood
+								</button>
+							</h2>
 						</div>
-					</div>
-				</div>
+						<div
+							id="collapseTwo"
+							class="collapse"
+							aria-labelledby="headingTwo"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body" id="moodRating">
+								<!-- emoji list for radio input  -->
+								<!-- default value is 3 : okay-->
 
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingFour">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseFour"
-							aria-expanded="false"
-							aria-controls="collapseThree"
-						>
-							food intake
-						</button>
-					</h2>
-					<div
-						id="collapseFour"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingFour"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">
-							<strong>This is the third item's accordion body.</strong> It is
-							hidden by default, until the collapse plugin adds the appropriate
-							classes that we use to style each element. These classes control
-							the overall appearance, as well as the showing and hiding via CSS
-							transitions. You can modify any of this with custom CSS or
-							overriding our default variables. It's also worth noting that just
-							about any HTML can go within the <code>.accordion-body</code>,
-							though the transition does limit overflow.
+								<div class="row">
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodVeryUnhappy"
+											value="1"
+										/>
+										<label class="form-check-label" for="moodVeryUnhappy"
+											><i class="bi bi-emoji-frown" style="font-size: 2rem"></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodUnhappy"
+											value="2"
+										/>
+										<label class="form-check-label" for="moodUnhappy"
+											><i
+												class="bi bi-emoji-expressionless"
+												style="font-size: 2rem"
+											></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodOkay"
+											value="3"
+										/>
+										<label class="form-check-label" for="moodOkay"
+											><i
+												class="bi bi-emoji-neutral"
+												style="font-size: 2rem"
+											></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodHappy"
+											value="4"
+										/>
+										<label class="form-check-label" for="moodHappy"
+											><i class="bi bi-emoji-smile" style="font-size: 2rem"></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline col rating px-4">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodVeryHappy"
+											value="5"
+										/>
+										<label class="form-check-label" for="moodVeryHappy">
+											<i
+												class="bi bi-emoji-sunglasses"
+												style="font-size: 2rem"
+											></i
+										></label>
+									</div>
+								</div>
+								<p class="text-center" id="resultMood"></p>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingFive">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseFive"
-							aria-expanded="false"
-							aria-controls="collapseFive"
+					<!-- 3. water intake -->
+					<div class="card custom">
+						<div class="card-header" id="headingThree">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseThree"
+									aria-expanded="true"
+									aria-controls="collapseThree"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/water.svg"
+											alt="water-icon"
+									/></span>
+									water intake
+								</button>
+							</h2>
+						</div>
+						<div
+							id="collapseThree"
+							class="collapse"
+							aria-labelledby="headingThree"
+							data-parent="#accordionMain"
 						>
-							physical activity level
-						</button>
-					</h2>
-					<div
-						id="collapseFive"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingFive"
-						data-bs-parent="#accordionExample"
-					></div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingSix">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseSix"
-							aria-expanded="false"
-							aria-controls="collapseSix"
-						>
-							sleep quality
-						</button>
-					</h2>
-					<div
-						id="collapseSix"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingSix"
-						data-bs-parent="#accordionExample"
-					></div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingSeven">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseSeven"
-							aria-expanded="false"
-							aria-controls="collapseSeven"
-						>
-							medication
-						</button>
-					</h2>
-					<div
-						id="collapseSeven"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingSeven"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">
-							<strong>This is the third item's accordion body.</strong> It is
-							hidden by default, until the collapse plugin adds the appropriate
-							classes that we use to style each element. These classes control
-							the overall appearance, as well as the showing and hiding via CSS
-							transitions. You can modify any of this with custom CSS or
-							overriding our default variables. It's also worth noting that just
-							about any HTML can go within the <code>.accordion-body</code>,
-							though the transition does limit overflow.
+							<div class="card-body text-center" id="waterIntake">
+								<!-- water bottle list for radio input  -->
+								<!-- default value is 1 :bottle -->
+
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="checkbox"
+										name="inlineRadioOptions"
+										id="1bottle"
+										value="1"
+									/>
+									<label class="form-check-label" for="1bottle"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
+								</div>
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="checkbox"
+										name="inlineRadioOptions"
+										id="2bottle"
+										value="22"
+									/>
+									<label class="form-check-label" for="2bottle"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
+								</div>
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="inlineRadioOptions"
+										id="inlineRadio2andTwo"
+										value="option2"
+									/>
+									<label class="form-check-label" for="inlineRadio2"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
+								</div>
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="inlineRadioOptions"
+										id="inlineRadio2andTwo"
+										value="option2"
+									/>
+									<label class="form-check-label" for="inlineRadio2"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
+								</div>
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="inlineRadioOptions"
+										id="inlineRadio2andTwo"
+										value="option2"
+									/>
+									<label class="form-check-label" for="inlineRadio2"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
+								</div>
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="inlineRadioOptions"
+										id="inlineRadio2andTwo"
+										value="option2"
+									/>
+									<label class="form-check-label" for="inlineRadio2"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingEight">
-						<button
-							class="accordion-button collapsed"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapseEight"
-							aria-expanded="false"
-							aria-controls="collapseEight"
+					<!-- 4. food intake  -->
+					<div class="card custom">
+						<div class="card-header" id="headingFour">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseFour"
+									aria-expanded="false"
+									aria-controls="collapseFour"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/take-away.svg"
+											alt="food-icon"
+									/></span>
+									food intake
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseFour"
+							class="collapse show"
+							aria-labelledby="headingFour"
+							data-parent="#accordionMain"
 						>
-							my note
-						</button>
-					</h2>
-					<div
-						id="collapseEight"
-						class="accordion-collapse collapse"
-						aria-labelledby="headingEight"
-						data-bs-parent="#accordionExample"
-					>
-						<div class="accordion-body">
-							<div class="form-floating">
-								<textarea
-									class="form-control"
-									placeholder="Leave a comment here"
-									id="floatingTextarea"
-								></textarea>
-								<label for="floatingTextarea">comments</label>
+							<div class="card-body">
+								<!-- food choices icons -->
+								<!-- checkbox for multiple choices -->
+							</div>
+						</div>
+					</div>
+					<!-- 5. physical activity level -->
+					<div class="card custom">
+						<div class="card-header" id="headingFive">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseFive"
+									aria-expanded="true"
+									aria-controls="collapseFive"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/running-solid.svg"
+											alt="running-icon"
+									/></span>
+									physical activity level
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseFive"
+							class="collapse show"
+							aria-labelledby="headingFive"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- physical activity level choice radio input  -->
+								<!-- default value is 3 :normal -->
+							</div>
+						</div>
+					</div>
+					<!-- 6. sleep quality  -->
+					<div class="card custom">
+						<div class="card-header" id="headingSix">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseSix"
+									aria-expanded="true"
+									aria-controls="collapseSix"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/moon-regular.svg"
+											alt="moon-icon"
+									/></span>
+									sleep quality
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseSix"
+							class="collapse show"
+							aria-labelledby="headingSix"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- sleep quality radio input -->
+								<!-- default is 3 :normal -->
+							</div>
+						</div>
+					</div>
+
+					<!-- 7. medication -->
+					<div class="card custom">
+						<div class="card-header customMY" id="headingSeven">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseSeven"
+									aria-expanded="true"
+									aria-controls="collapseSeven"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/pills.svg"
+											alt="pill-icon"
+									/></span>
+									medication
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseSeven"
+							class="collapse show"
+							aria-labelledby="headingSeven"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- short text input area -->
+								<!-- showing list of medication user input -->
+								<!-- add/remove medication -->
+							</div>
+						</div>
+					</div>
+					<!-- 8. my note  -->
+					<div class="card custom">
+						<div class="card-header" id="headingEight">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseEight"
+									aria-expanded="true"
+									aria-controls="collapseEight"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/clipboard-regular.svg"
+											alt="note-icon"
+									/></span>
+									my note
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseEight"
+							class="collapse show"
+							aria-labelledby="headingEight"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- large text area input  -->
+								<!-- limit 200 -->
+								<!-- edit/remove -->
 							</div>
 						</div>
 					</div>
 				</div>
+				<!-- edit / add buttons  -->
+				<div class="btn-group btnGroup">
+					<button
+						type="submit"
+						id="edit-btn"
+						class="btn text-dark form-control custom"
+					>
+						<span>
+							<i class="fas fa-edit"></i>
+						</span>
+						edit my day
+					</button>
+					<button
+						type="submit"
+						id="add-btn"
+						class="btn text-dark form-control custom"
+					>
+						<span> <i class="fas fa-plus"></i></span>
+							
+						
+						add my day
+					</button>
+				</div>
 			</div>
+			<footer>
+				<p class="text-center">made with <i class="bi bi-heart"></i> by pod1</p>
+			</footer>
 		</div>
+
+

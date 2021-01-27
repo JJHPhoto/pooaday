@@ -15,12 +15,14 @@ body {
 }
 .custom {
 	background-color: transparent;
+	mix-blend-mode: normal;
 }
 .customBtn:hover {
-	background-color: violet;
+	/* background-color: violet; */
 	/* cursor: pointer; */
-	/* mix-blend-mode: color-burn; */
+	mix-blend-mode: color-burn !important;
 }
+
 .customMY {
 	/* mix-blend-mode: color-burn; */
 	/* this changing text-color only  */
