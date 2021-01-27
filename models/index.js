@@ -32,6 +32,7 @@ fs.readdirSync(__dirname)
       sequelize,
       Sequelize.DataTypes
     );
+    db[model.name] = model;
   });
 
 Object.keys(db).forEach(function (modelName) {
