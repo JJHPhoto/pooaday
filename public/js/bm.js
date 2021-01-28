@@ -1,4 +1,4 @@
-$("#add-btn").on("click", () => {
+$("#BM-add-btn").on("click", () => {
     const date = $("#datepicker").val();
      if(!date){
          return false;
@@ -8,7 +8,8 @@ $("#add-btn").on("click", () => {
      
      const amount = $("#amountRange").val();
      const speed = $("#speedRange").val();
-     const comfort = $("#comfortRating").val();
+     const comfort = $(".comfort:checked").val();
+     console.log(comfort);
   $.ajax({
     method: "POST",
     url: "/api/bm",
