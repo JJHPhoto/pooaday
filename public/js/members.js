@@ -1,15 +1,19 @@
 $(document).ready(() => {
 	// date picker
-	$(".datepicker").datepicker({
-		clearBtn: true,
-		format: "mm-dd-yyyy",
+	// $(".datepicker").datepicker({
+	// 	clearBtn: true,
+	// 	format: "mm-dd-yyyy",
+	// });
+	$("#datepicker").datepicker({
+		format:"yyyy-mm-dd"
 	});
-	$("#datepicker").datepicker();
 	$("#timepicker").timepicker();
 
 	// picked date from date picker
 	$("#datepicker").on("change", function () {
 		var pickedDate = $("input").val();
+	
+
 		$("#pickedDate").text(pickedDate);
 	});
 
