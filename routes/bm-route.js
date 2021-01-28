@@ -20,9 +20,21 @@ router.post("/api/bm", isAuthenticated, (req, res) => {
     type: req.body.type,
     amount: req.body.amount,
     speed: req.body.speed,
-    comfort: req.body.comfort, 
+    comfort: req.body.comfort,
     UserId: req.user.id,
   }).then((bm) => {
+    res.json(bm);
+  });
+});
+
+router.put("/api/bm", isAuthenticated, (req, res) => {
+  console.log(req.body)
+  BM.update(req.body, {
+    
+    where: {
+      id: req.body.id,
+    },
+  }).then( (bm) => {
     res.json(bm);
   });
 });
