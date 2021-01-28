@@ -1,5 +1,3 @@
-
-
 $("#add-btn").on("click", () => {
     const date = $("#datepicker").val();
      if(!date){
