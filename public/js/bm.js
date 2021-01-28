@@ -42,6 +42,6 @@ $("#BM-edit-btn").on("click", (event) => {
     url: "/api/bm",
     data: bm,
   }).then((res) => {
-    return res.json(bm);
+   console.log(res);
   });
 });
