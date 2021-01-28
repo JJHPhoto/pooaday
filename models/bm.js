@@ -8,37 +8,37 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TIME,
       allowNull: false,
     },
-    type: {
+    style: {
       type: DataTypes.STRING,
       validate: {
-        isIn: ["solid", "normal", "liquid"],
+        isIn: [["1", "2", "3", "4", "5"]],
       },
       allowNull: false,
-      defaultValue: "normal",
+      defaultValue: "3",
     },
     amount: {
       type: DataTypes.STRING,
       validate: {
-        isIn: ["little", "normal", "a lot"],
+        isIn: [["1", "2", "3"]],
       },
       allowNull: false,
-      defaultValue: "normal",
+      defaultValue: "2",
     },
     speed: {
       type: DataTypes.STRING,
       validate: {
-        isIn: ["slow", "normal", "fast"],
+        isIn: [["1","2","3"]],
       },
       allowNull: false,
-      defaultValue: "normal",
+      defaultValue: "2",
     },
     comfort: {
       type: DataTypes.STRING,
       validate: {
-        isIn: ["sad", "normal", "good"],
+        isIn: [["1", "2", "3", "4", "5"]],
       },
       allowNull: false,
-      defaultValue: "normal",
+      defaultValue: "3",
     },
   });
 
