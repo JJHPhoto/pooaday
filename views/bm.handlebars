@@ -2,12 +2,12 @@
 		<div class="container-fluid px-0">
 			{{> nav }}
 			<!-- user name display -->
-			<h6 class="text-center">hello, <span class="member-name"> </span></h6>
+			<h6 class="text-center"> <span class="member-name"> </span></h6>
 			<!-- date display // need to add display:none // for picked date  -->
 			<p class="h3 text-center" id="date-display"></p>
 			<!-- change date when it is picked from date picker -->
 			<p class="text-center">
-				<i class="fas fa-poop"></i> my  bowel movements for 
+				<i class="fas fa-poop"></i> my  bowel movements 
 				<span id= "pickedDate"></span>
 			</p>
 
@@ -50,7 +50,7 @@
 
 								<span>
 									<button
-										type="button"
+										type="reset"
 										class="btn btn-sm btn-outline-secondary"
 									>
 										+ add new
@@ -102,7 +102,7 @@
 										<div class="col text-right">solid</div>
 									</div>
 									<div id="resultStyle" class="text-center">
-										Current Value: <b></b>
+									
 									</div>
 								</div>
 							</div>
@@ -152,7 +152,7 @@
 									</div>
 
 									<div id="resultAmount" class="text-center">
-										Current Value: <b></b>
+										
 									</div>
 								</div>
 							</div>
@@ -187,9 +187,9 @@
 								<!-- default value is 2 (between 5-10min) -->
 
 								<div class="speed-range">
-									<!-- <form> -->
-									<label for="speedRange">speed range</label>
-									<!-- <input type="range" class="custom-range" id="customRange" min="1" max="5" value="1"> -->
+									
+									
+									
 									<input
 										type="range"
 										class="form-control-range"
@@ -201,12 +201,12 @@
 									<!-- </form> -->
 									<!-- speed text // need to change text for small screen  -->
 									<div class="row speedText">
-										<div class="col">less than 5 mins</div>
+										<div class="col"> 	&#60; 5 mins</div>
 										<div class="col text-center">5 - 10 mins</div>
-										<div class="col text-right">more than 10 mins</div>
+										<div class="col text-right">&#62; 10 mins</div>
 									</div>
 									<div id="resultSpeed" class="text-center">
-										Current Value: <b></b>
+										
 									</div>
 								</div>
 							</div>
@@ -332,13 +332,17 @@
 					</button>
 					<button
 						type="submit"
-						id="BM-add-btn"
+						id="BM-modal-btn"
 						class="btn text-dark form-control custom"
+						data-toggle="modal" data-target="#viewEntry"
+						
 					>
 					<span> <i class="fas fa-plus"></i></span>
 						add my day
 					</button>
 				</div>
+				{{> modal}}
+				
 			</div>
 			{{> footer}}
 		</div>
