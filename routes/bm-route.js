@@ -13,13 +13,15 @@ router.get("/api/bm", isAuthenticated, (req, res) => {
 });
 
 router.post("/api/bm", isAuthenticated, (req, res) => {
+  console.log(req.user);
   BM.create({
     date: req.body.date,
     time: req.body.time,
     type: req.body.type,
     amount: req.body.amount,
     speed: req.body.speed,
-    comfort: req.body.comfort,
+    comfort: req.body.comfort, 
+    UserId: req.user.id,
   }).then((bm) => {
     res.json(bm);
   });
