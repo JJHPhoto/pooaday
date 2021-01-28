@@ -1,38 +1,6 @@
 
 		<div class="container-fluid px-0">
-			<!-- navbar -->
-			<nav class="navbar navbar-expand-sm navbar-light">
-				<i class="fas fa-toilet-paper" style="font-size: 1.5rem;"></i>
-				<a class="navbar-brand" href="/members"> &nbsp;&nbsp;pooaday</a>
-
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="/members">Home </a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/bm">my bowel</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">report</a></li>
-						<li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
-					</ul>
-					<!-- date picker added -->
-
-					<input id="datepicker" width="250" placeholder="change date" />
-				</div>
-			</nav>
+			{{> nav }}
 			<!-- user name display -->
 			<h6 class="text-center">hello, <span class="member-name"> </span></h6>
 			<!-- date display // need to add display:none // for picked date  -->
@@ -54,25 +22,26 @@
 						<div class="card-header" id="headingOne">
 							<h2 class="mb-0">
 								<button
-									class="btn text-dark btn-block customBtn"
+									class="btn collapsed btn-block text-dark customBtn"
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseOne"
-									aria-expanded="true"
+									aria-expanded="false"
 									aria-controls="collapseOne"
 								>
-									time
+									time 
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseOne"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingOne"
 							data-parent="#accordionMain"
 						>
-							<div class="card-body text-center justify-content-center">
+							<div class="card-body text-center">
 								<p>adjust time</p>
 								<!-- time picker -->
 								<div class="timepicker">
@@ -104,6 +73,7 @@
 									aria-controls="collapseTwo"
 								>
 									style
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
@@ -152,6 +122,7 @@
 									aria-controls="collapseThree"
 								>
 									amount
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
@@ -201,13 +172,14 @@
 									aria-controls="collapseFour"
 								>
 									speed
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseFour"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingFour"
 							data-parent="#accordionMain"
 						>
@@ -254,13 +226,14 @@
 									aria-controls="collapseFive"
 								>
 									comfort level
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseFive"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingFive"
 							data-parent="#accordionMain"
 						>
@@ -367,8 +340,6 @@
 					</button>
 				</div>
 			</div>
-			<footer>
-				<p class="text-center">made with <i class="bi bi-heart"></i> by pod1</p>
-			</footer>
+			{{> footer}}
 		</div>
 
