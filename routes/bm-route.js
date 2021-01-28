@@ -35,7 +35,7 @@ router.put("/api/bm", isAuthenticated, (req, res) => {
       id: req.body.id,
     },
   }).then( (bm) => {
-    res.json(bm);
+    res.json(bm + id);
   });
 });
 
