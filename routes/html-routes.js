@@ -5,7 +5,7 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 router.get("/", (req, res) => {
   if (req.user) {
-  return  res.redirect("/members");
+    return res.redirect("/members");
   }
   res.render("index");
   // res.sendFile(path.join(__dirname, "/signup.html"));
@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 
 router.get("/signup", (req, res) => {
   if (req.user) {
-   return res.redirect("/");
+    return res.redirect("/");
   }
   res.render("login");
 });
@@ -26,12 +26,10 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/members", isAuthenticated, (req, res) => {
- 
   res.render("members");
 });
 
 router.get("/bm", isAuthenticated, (req, res) => {
-  
   res.render("bm");
 });
 

@@ -32,7 +32,7 @@ $(document).ready(() => {
       password: password,
     })
       .then(() => {
-        window.location.replace("/bm");
+        window.location.replace("/members");
       })
       .catch(handleLoginErr);
   }
