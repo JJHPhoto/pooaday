@@ -1,38 +1,6 @@
 
 		<div class="container-fluid px-0">
-			<!-- navbar -->
-			<nav class="navbar navbar-expand-sm navbar-light">
-				<i class="fas fa-toilet-paper" style="font-size: 1.5rem;"></i>
-				<a class="navbar-brand" href="/members"> &nbsp;&nbsp;pooaday</a>
-
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="/members">Home </a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/bm">my bowel</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">report</a></li>
-						<li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
-					</ul>
-					<!-- date picker added -->
-
-					<input id="datepicker" width="250" placeholder="change date" />
-				</div>
-			</nav>
+			{{> nav }}
 			<!-- user name display -->
 			<h6 class="text-center">hello, <span class="member-name"> </span></h6>
 			<!-- date display // need to add display:none // for picked date  -->
@@ -54,25 +22,27 @@
 						<div class="card-header" id="headingOne">
 							<h2 class="mb-0">
 								<button
-									class="btn text-dark btn-block customBtn"
+									class="btn collapsed btn-block text-dark customBtn"
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseOne"
-									aria-expanded="true"
+									aria-expanded="false"
 									aria-controls="collapseOne"
 								>
-									time
+									time 
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
+						<!-- <input id="timepicker" width="276" /> -->
 
 						<div
 							id="collapseOne"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingOne"
 							data-parent="#accordionMain"
 						>
-							<div class="card-body text-center justify-content-center">
+							<div class="card-body text-center">
 								<p>adjust time</p>
 								<!-- time picker -->
 								<div class="timepicker">
@@ -104,6 +74,7 @@
 									aria-controls="collapseTwo"
 								>
 									style
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
@@ -152,6 +123,7 @@
 									aria-controls="collapseThree"
 								>
 									amount
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
@@ -181,10 +153,8 @@
 										<div class="col text-right">a lot</div>
 									</div>
 
-									<div id="resultAmount" class="text-center">
-										Current Value: <b></b>
-									</div>
-								</div>
+							<div id="resultAmount" class="text-center">
+								Current Value: <b></b>
 							</div>
 						</div>
 					</div>
@@ -201,13 +171,14 @@
 									aria-controls="collapseFour"
 								>
 									speed
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseFour"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingFour"
 							data-parent="#accordionMain"
 						>
@@ -215,29 +186,25 @@
 								<!-- range slider -->
 								<!-- default value is 2 (between 5-10min) -->
 
-								<div class="speed-range">
-									<!-- <form> -->
-									<label for="speedRange">speed range</label>
-									<!-- <input type="range" class="custom-range" id="customRange" min="1" max="5" value="1"> -->
-									<input
-										type="range"
-										class="form-control-range"
-										id="speedRange"
-										min="1"
-										max="3"
-										value="1"
-									/>
-									<!-- </form> -->
-									<!-- speed text // need to change text for small screen  -->
-									<div class="row speedText">
-										<div class="col">less than 5 mins</div>
-										<div class="col text-center">5 - 10 mins</div>
-										<div class="col text-right">more than 10 mins</div>
-									</div>
-									<div id="resultSpeed" class="text-center">
-										Current Value: <b></b>
-									</div>
-								</div>
+				<div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionMain">
+					<div class="card-body">
+						<!-- range slider -->
+						<!-- default value is 2 (between 5-10min) -->
+
+						<div class="speed-range">
+							<!-- <form> -->
+							<label for="speedRange">speed range</label>
+							<!-- <input type="range" class="custom-range" id="customRange" min="1" max="5" value="1"> -->
+							<input type="range" class="form-control-range" id="speedRange" min="1" max="3" value="1" />
+							<!-- </form> -->
+							<!-- speed text // need to change text for small screen  -->
+							<div class="row speedText">
+								<div class="col">less than 5 mins</div>
+								<div class="col text-center">5 - 10 mins</div>
+								<div class="col text-right">more than 10 mins</div>
+							</div>
+							<div id="resultSpeed" class="text-center">
+								Current Value: <b></b>
 							</div>
 						</div>
 					</div>
@@ -254,13 +221,14 @@
 									aria-controls="collapseFive"
 								>
 									comfort level
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseFive"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingFive"
 							data-parent="#accordionMain"
 						>
@@ -339,36 +307,65 @@
 									</div>
 								</div>
 
-								<p class="text-center" id="resultComfort"></p>
+				<div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#accordionMain">
+					<div class="card-body" id="comfortRating">
+						<!-- emoji radio select   -->
+						<!-- default value is 3 (okay) -->
+						<div class="row">
+							<div class="form-check form-check-inline col rating px-4">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions"
+									id="comfortVeryUnhappy" value="1" />
+								<label class="form-check-label" for="comfortVeryUnhappy"><i class="bi bi-emoji-frown"
+										style="font-size: 2rem"></i></label>
+							</div>
+							<div class="form-check form-check-inline col rating px-4">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions"
+									id="comfortUnhappy" value="2" />
+								<label class="form-check-label" for="comfortUnhappy"><i
+										class="bi bi-emoji-expressionless" style="font-size: 2rem"></i></label>
+							</div>
+							<div class="form-check form-check-inline col rating px-4">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="comfortOkay"
+									value="3" />
+								<label class="form-check-label" for="comfortOkay"><i class="bi bi-emoji-neutral"
+										style="font-size: 2rem"></i></label>
+							</div>
+							<div class="form-check form-check-inline col rating px-4">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="comfortHappy"
+									value="4" />
+								<label class="form-check-label" for="comfortHappy"><i class="bi bi-emoji-smile"
+										style="font-size: 2rem"></i></label>
+							</div>
+							<div class="form-check form-check-inline col rating px-4">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions"
+									id="comfortVeryHappy" value="5" />
+								<label class="form-check-label" for="comfortVeryHappy">
+									<i class="bi bi-emoji-sunglasses" style="font-size: 2rem"></i></label>
 							</div>
 						</div>
+
+						<p class="text-center" id="resultComfort"></p>
 					</div>
 				</div>
-
-				<!-- edit / add buttons  -->
-				<div class="btn-group btnGroup">
-					<button
-						type="submit"
-						id="edit-btn"
-						class="btn text-dark form-control custom"
-					>
-						<span>
-							<i class="fas fa-edit"></i>
-						</span>
-						edit my day
-					</button>
-					<button
-						type="submit"
-						id="add-btn"
-						class="btn text-dark form-control custom"
-					>
-					<span> <i class="fas fa-plus"></i></span>
-						add my day
-					</button>
-				</div>
 			</div>
-			<footer>
-				<p class="text-center">made with <i class="bi bi-heart"></i> by pod1</p>
-			</footer>
+			{{> footer}}
 		</div>
 
+		<!-- edit / add buttons  -->
+		<div class="btn-group btnGroup">
+			<button type="submit" id="edit-btn" class="btn text-dark form-control custom">
+				<span>
+					<i class="fas fa-edit"></i>
+				</span>
+				edit my day
+			</button>
+			<button type="submit" id="add-btn" class="btn text-dark form-control custom">
+				<span> <i class="fas fa-plus"></i></span>
+				add my day
+			</button>
+		</div>
+	</div>
+	<footer>
+		<p class="text-center">made with <i class="bi bi-heart"></i> by pod1</p>
+	</footer>
+</div>

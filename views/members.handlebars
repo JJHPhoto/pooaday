@@ -1,41 +1,8 @@
 
 		<div class="container-fluid px-0">
-			<!-- navbar -->
-			<nav class="navbar navbar-expand-sm navbar-light">
-				
-				<i class="fas fa-toilet-paper" style="font-size: 1.5rem;"></i>
-
-				<a class="navbar-brand" href="#"> &nbsp;&nbsp;pooaday</a>
-
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="/members">Home </a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/bm">my bowel</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">report</a></li>
-						<li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
-					</ul>
-					<!-- date picker added -->
-					<input id="datepicker" width="250" placeholder="change date" />
-				</div>
-			</nav>
+		{{> nav }}
 			<!-- user name display -->
-			<h6 class="text-center">hello, <span class="member-name">{{this.name}} </span></h6>
+			<h6 class="text-center">Hello <span class="member-name">{{this.name}} </span></h6>
 			<!-- date display // need to add display:none // for picked date  -->
 			<p class="h3 text-center" id="date-display"></p>
 			<!-- change date when it is picked from date picker -->
@@ -54,7 +21,7 @@
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseOne"
-									aria-expanded="true"
+									aria-expanded="false"
 									aria-controls="collapseOne"
 								>
 									<span
@@ -64,13 +31,14 @@
 											alt="poop-icon"
 									/></span>
 									my bowel movements
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseOne"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingOne"
 							data-parent="#accordionMain"
 						>
@@ -97,7 +65,7 @@
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseTwo"
-									aria-expanded="true"
+									aria-expanded="false"
 									aria-controls="collapseTwo"
 								>
 									<span
@@ -106,7 +74,8 @@
 											src="/img/smile-regular.svg"
 											alt="smile-icon"
 									/></span>
-									my mood
+									my mood 
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
@@ -204,7 +173,7 @@
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseThree"
-									aria-expanded="true"
+									aria-expanded="false"
 									aria-controls="collapseThree"
 								>
 									<span
@@ -214,6 +183,7 @@
 											alt="water-icon"
 									/></span>
 									water intake
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
@@ -321,13 +291,14 @@
 											alt="food-icon"
 									/></span>
 									food intake
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseFour"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingFour"
 							data-parent="#accordionMain"
 						>
@@ -346,7 +317,7 @@
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseFive"
-									aria-expanded="true"
+									aria-expanded="false"
 									aria-controls="collapseFive"
 								>
 									<span
@@ -356,13 +327,14 @@
 											alt="running-icon"
 									/></span>
 									physical activity level
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseFive"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingFive"
 							data-parent="#accordionMain"
 						>
@@ -381,7 +353,7 @@
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseSix"
-									aria-expanded="true"
+									aria-expanded="false"
 									aria-controls="collapseSix"
 								>
 									<span
@@ -391,13 +363,14 @@
 											alt="moon-icon"
 									/></span>
 									sleep quality
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseSix"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingSix"
 							data-parent="#accordionMain"
 						>
@@ -417,7 +390,7 @@
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseSeven"
-									aria-expanded="true"
+									aria-expanded="false"
 									aria-controls="collapseSeven"
 								>
 									<span
@@ -427,13 +400,14 @@
 											alt="pill-icon"
 									/></span>
 									medication
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseSeven"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingSeven"
 							data-parent="#accordionMain"
 						>
@@ -453,7 +427,7 @@
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseEight"
-									aria-expanded="true"
+									aria-expanded="false"
 									aria-controls="collapseEight"
 								>
 									<span
@@ -463,13 +437,14 @@
 											alt="note-icon"
 									/></span>
 									my note
+									<i class="bi bi-chevron-compact-down float-right"></i>
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseEight"
-							class="collapse show"
+							class="collapse"
 							aria-labelledby="headingEight"
 							data-parent="#accordionMain"
 						>
@@ -505,9 +480,7 @@
 					</button>
 				</div>
 			</div>
-			<footer>
-				<p class="text-center">made with <i class="bi bi-heart"></i> by pod1</p>
-			</footer>
+			{{> footer}}
 		</div>
 
 
