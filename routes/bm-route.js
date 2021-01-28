@@ -28,7 +28,9 @@ router.post("/api/bm", isAuthenticated, (req, res) => {
 });
 
 router.put("/api/bm", isAuthenticated, (req, res) => {
+  console.log(req.body)
   BM.update(req.body, {
+    
     where: {
       id: req.body.id,
     },

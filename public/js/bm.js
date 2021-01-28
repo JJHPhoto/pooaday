@@ -26,7 +26,9 @@ $("#BM-add-btn").on("click", () => {
   });
 });
 
-$("#BM-edit-btn").on("click", (bm) => {
+$("#BM-edit-btn").on("click", (event) => {
+  
+  
   const date = $("#datepicker").val();
   const time = $("#timepicker").val();
   const style = $("#styleRange").val();
@@ -34,6 +36,7 @@ $("#BM-edit-btn").on("click", (bm) => {
   const speed = $("#speedRange").val();
   const comfort = $(".comfort:checked").val();
 
+  const bm = {date,time,style,amount,speed,comfort};
   $.ajax({
     method: "PUT",
     url: "/api/bm",
