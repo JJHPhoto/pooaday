@@ -1,33 +1,57 @@
 $(document).ready(() => {
-	// date picker
-	// $(".datepicker").datepicker({
-	// 	clearBtn: true,
-	// 	format: "mm-dd-yyyy",
-	// });
+	// user name display
+	$.get("/api/user_data").then((user) => {
+		$(".member-name").text(` hello , ${user.name} ! `);
+	});
+
 	$("#datepicker").datepicker({
-		format:"yyyy-mm-dd"
+		format: "yyyy-mm-dd",
 	});
 	$("#timepicker").timepicker();
 
 	// picked date from date picker
-	$("#datepicker").on("change", function () {
-		var pickedDate = $("input").val();
+	let pickedDate; 
+		$("#datepicker").on("change", function () {
+			pickedDate = $("input").val();
 	
-
-		$("#pickedDate").text(pickedDate);
-	});
-
-	// user name display
-	$.get("/api/user_data").then((user) => {
-		$(".member-name").text(`${user.name} ! `);
-	});
+			$("#pickedDate").text(` for  ${pickedDate} `);
+			
+			
+		});
+		
+	
+	
+	
 
 	// display today's date
 	let today = new Date();
 	const date = today.toDateString();
+
 	$("#date-display").text(date);
 	console.log(date);
+	console.log(today);
 	// (fri jan 22 2021 format)
+
+	function convertDate() {
+		today = new Date();
+		let sYear = today.getFullYear();
+		let sMonth = today.getMonth() + 1;
+		let sDate = today.getDate();
+		sMonth = sMonth > 9 ? sMonth : "0" + sMonth;
+		sDate = sDate > 9 ? sDate : "0" + sDate;
+		return sYear + "-" + sMonth + "-" + sDate;
+	}
+
+	convertDate(today);
+	console.log(convertDate(today), "today");
+	// getting same date format as datepicker
+
+	function checkDate() {
+		
+		
+	}
+	checkDate(); 
+
 
 	/// range slider reading value //// BM style
 
