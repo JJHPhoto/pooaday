@@ -3,7 +3,6 @@ $(document).ready(() => {
 	const date = today.toDateString();
 
 	$("#date-display").text(date);
-	
 
 	function convertDate() {
 		today = new Date();
@@ -13,16 +12,14 @@ $(document).ready(() => {
 		sMonth = sMonth > 9 ? sMonth : "0" + sMonth;
 		sDate = sDate > 9 ? sDate : "0" + sDate;
 		return sYear + "-" + sMonth + "-" + sDate;
-    }
-    
-
+	}
 
 	const convertedDate = convertDate(today);
-	// console.log(convertDate(today), "today");
+	console.log(convertDate(today), "today");
 
 	$("#BM-add-btn").on("click", () => {
 		const pickedDate = $("#datepicker").val();
-		// console.log(convertedDate, "convertDate");
+		console.log(convertedDate, "convertDate");
 		let date;
 		if (!pickedDate) {
 			date = convertedDate;
@@ -39,7 +36,7 @@ $(document).ready(() => {
 		const amount = $("#amountRange").val();
 		const speed = $("#speedRange").val();
 		const comfort = $(".comfort:checked").val();
-		// console.log(comfort);
+		console.log(comfort);
 		$.ajax({
 			method: "POST",
 			url: "/api/bm",
@@ -52,12 +49,41 @@ $(document).ready(() => {
 				comfort: comfort,
 			},
 		}).then((res) => {
-			console.log(res);
+            console.log(res, "res");
+            //this showing nothing... 
+			location.reload();
 		});
 	});
+	// //////////////
 
+	const url = window.location.search;
+	let UserId;
+	if (url.indexOf("?User_id=") !== -1) {
+		UserId = url.split("=")[1];
+		getPosts(UserId);
+	} else {
+		getPosts();
+	}
+	function getPosts(user) {
+		UserId = user || "";
+		if (UserId) {
+			UserId = "/?User_id=" + UserId;
+		}
+		$.get("/api/bm" + UserId, function (data) {
+            console.log("BMs", data);
+            // showing correct data 
+            bms = data; 
+            console.log(bms[1].date)
+            // showing correct data 
+
+            
+            
+          
+		});
+	}
+
+	//////////////////////////
 	$("#BM-edit-btn").on("click", (event) => {
-    event.preventDefault();
 		const date = $("#datepicker").val();
 		const time = $("#timepicker").val();
 		const style = $("#styleRange").val();
@@ -65,13 +91,13 @@ $(document).ready(() => {
 		const speed = $("#speedRange").val();
 		const comfort = $(".comfort:checked").val();
 
-    const bm = { date, time, style, amount, speed, comfort };
+		const bm = { date, time, style, amount, speed, comfort };
 		$.ajax({
 			method: "PUT",
 			url: "/api/bm",
 			data: bm,
 		}).then((res) => {
-      res.render(bm);
+			return res.json(bm);
 		});
 	});
 });

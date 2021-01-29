@@ -212,13 +212,13 @@
 				<h5 class="card-title text-center ">Bowel Movement</h5>
 				 <div class="list-group list-group-flush">
 
-                        <ul>
                           
-                            
-                            <span><strong>{{bowel}}</strong></span> <br>
+                         <ul> 
+							 {{#each BM}}
+                            <span ><strong>Date: {{this.date}} Time: {{this.time}} Style: {{this.style}} Amount: {{this.amount}} Speed: {{this.speed}} Comfort: {{this.comfort}}</strong></span> <br>
                             
                             <hr>
-                            
+                            {{/each}}
                           
 
                         </ul>
