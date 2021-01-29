@@ -322,8 +322,10 @@
 				<div class="btn-group btnGroup">
 					<button
 						type="submit"
-						id="BM-edit-btn"
+						{{!-- id="BM-edit-btn" --}}
+						id="BM-modal-btn"
 						class="btn text-dark form-control custom"
+						data-toggle="modal" data-target="#viewEntry"
 					>
 						<span>
 							<i class="fas fa-edit"></i>
@@ -332,11 +334,12 @@
 					</button>
 					<button
 						type="submit"
-						id="BM-modal-btn"
+						id="BM-add-btn"
 						class="btn text-dark form-control custom"
-						data-toggle="modal" data-target="#viewEntry"
+						
 						
 					>
+					
 					<span> <i class="fas fa-plus"></i></span>
 						add my day
 					</button>
