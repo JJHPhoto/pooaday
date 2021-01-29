@@ -1,14 +1,15 @@
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const router = require("express").Router();
 const { BM } = require("../models");
+const bm = require("../models/bm");
 
 router.get("/api/bm", isAuthenticated, (req, res) => {
-  BM.findAll({
+  BM.findAll(data, {
     where: {
       UserId: req.user.id,
     },
   }).then((bm) => {
-    res.json(bm);
+    res.render("bm", {bm});
   });
 });
 
@@ -23,19 +24,23 @@ router.post("/api/bm", isAuthenticated, (req, res) => {
     comfort: req.body.comfort,
     UserId: req.user.id,
   }).then((bm) => {
+    console.log(bm);
     res.json(bm);
   });
 });
 
 router.put("/api/bm", isAuthenticated, (req, res) => {
   console.log(req.body)
-  BM.update(req.body, {
-    
+  const { date, time, type, amount, speed, comfort, id } = req.body;
+  const updateBm = {date, time, type, amount, speed, comfort, UserId};
+
+  BM.update(updateBm, {
+  
     where: {
-      id: req.body.id,
+      UserId
     },
-  }).then( (bm) => {
-    res.json(bm + id);
+  }).then( (res) => {
+    res.json(res);
   });
 });
 
