@@ -9,9 +9,11 @@ $(document).ready(() => {
   });
   $("#timepicker").timepicker();
 
+  let pickedDate;
+
   // picked date from date picker
   $("#datepicker").on("change", function () {
-    var pickedDate = $("input").val();
+    pickedDate = $("input").val();
 
     $("#pickedDate").text(pickedDate);
   });
