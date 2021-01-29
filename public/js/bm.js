@@ -3,7 +3,6 @@ $(document).ready(() => {
 	const date = today.toDateString();
 
 	$("#date-display").text(date);
-	
 
 	function convertDate() {
 		today = new Date();
@@ -13,9 +12,7 @@ $(document).ready(() => {
 		sMonth = sMonth > 9 ? sMonth : "0" + sMonth;
 		sDate = sDate > 9 ? sDate : "0" + sDate;
 		return sYear + "-" + sMonth + "-" + sDate;
-    }
-    
-
+	}
 
 	const convertedDate = convertDate(today);
 	console.log(convertDate(today), "today");
@@ -52,10 +49,40 @@ $(document).ready(() => {
 				comfort: comfort,
 			},
 		}).then((res) => {
-			console.log(res);
+            console.log(res, "res");
+            //this showing nothing... 
+			location.reload();
 		});
 	});
+	// //////////////
 
+	const url = window.location.search;
+	let UserId;
+	if (url.indexOf("?User_id=") !== -1) {
+		UserId = url.split("=")[1];
+		getPosts(UserId);
+	} else {
+		getPosts();
+	}
+	function getPosts(user) {
+		UserId = user || "";
+		if (UserId) {
+			UserId = "/?User_id=" + UserId;
+		}
+		$.get("/api/bm" + UserId, function (data) {
+            console.log("BMs", data);
+            // showing correct data 
+            bms = data; 
+            console.log(bms[1].date)
+            // showing correct data 
+
+            
+            
+          
+		});
+	}
+
+	//////////////////////////
 	$("#BM-edit-btn").on("click", (event) => {
 		const date = $("#datepicker").val();
 		const time = $("#timepicker").val();
