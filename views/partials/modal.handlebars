@@ -8,11 +8,34 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+          sfsdfsdfs sdfsdfsdfsdf
+               {{#each BMs}}
+        <div class="card-body"data-id="{{id}}">
+        <h5 class ="card-title">{{date}} {{time}}</h5>
+        <li>
+            <ul>{{#if style}} 
+                    {{#each this}}
+                       {{#if 1}} fgdsfsldkgjlk
+                       {{else if 2}}sfsdfsdfsf
+                       {{/if}}
+                    {{/each}} 
+                {{/if}}</ul>
+            <ul>{{#if amount}} sdfgkdjgl{{else}} sfsdfsf else {{/if}}</ul>
+
+        </li>
+            <p class ="card-text">
+                
+             
+            </p>
+        </div>
+        {{/each}}
+        
+       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
-        <button type="button" class="btn btn-primary" id="BM-add-btn">save</button>
+        <button type="button" class="btn btn-primary" id="">save</button>
+
       </div>
     </div>
   </div>

@@ -31,7 +31,8 @@ $(document).ready(() => {
 			return false;
 		}
 		const time = $("#timepicker").val();
-		const style = $("#styleRange").val();
+        const style = $("#styleRange").val();
+        
 
 		const amount = $("#amountRange").val();
 		const speed = $("#speedRange").val();
@@ -63,7 +64,8 @@ $(document).ready(() => {
 		getPosts(UserId);
 	} else {
 		getPosts();
-	}
+    }
+    // this gets all posts from database.... 
 	function getPosts(user) {
 		UserId = user || "";
 		if (UserId) {
@@ -76,6 +78,7 @@ $(document).ready(() => {
             console.log(bms[1].date)
             // showing correct data 
 
+          
             
             
           
@@ -97,7 +100,8 @@ $(document).ready(() => {
 			url: "/api/bm",
 			data: bm,
 		}).then((res) => {
-			return res.json(bm);
+            return res.json(bm);
+            
 		});
 	});
 });
