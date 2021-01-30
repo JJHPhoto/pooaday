@@ -53,12 +53,22 @@ router.post("/api/bm", isAuthenticated, (req, res) => {
 	});
 });
 
-router.put("/api/bm", isAuthenticated, (req, res) => {
+router.put("/api/bm/:id", isAuthenticated, (req, res) => {
 	console.log(req.body);
 	BM.update(req.body, {
-		where: {
-			id: req.body.id,
-		},
+    
+      id: req.body.id,
+      time: req.body.time,
+      date: req.body.date,
+      style: req.body.style,
+      amount: req.body.amount,
+      category: req.body.category,
+
+      where: {
+        id: req.body.id,
+    },
+		
+		
 	}).then((bm) => {
 		res.json(bm);
 	});
