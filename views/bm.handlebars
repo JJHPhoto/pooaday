@@ -194,16 +194,18 @@
 
 						<p class="text-center" id="resultComfort"></p>
 					</div>
-
 				</div>
 			</div>
 		</div>
 
+
+		<!-- edit / add buttons  -->
+
 		<!-- edit / add buttons  -->
 		<div class="btn-group btnGroup">
-			
-			<button type="submit" id="BM-modal-btn" class="btn text-dark form-control custom" data-toggle="modal"
-				data-target="#viewEntry">
+
+			<button type="submit" id="BM-modal-btn" class="btn text-dark form-control custom" data-toggle="modal" data-target="#viewEntry"> 
+
 				<span> <i class="fas fa-plus"></i></span>
 				add my day
 			</button>
@@ -211,26 +213,33 @@
 		<div class="card" id="displayData">
 			<div class="card-body">
 				<h5 class="card-title text-center ">Bowel Movement</h5>
-				 <div class="list-group list-group-flush">
+				<div class="list-group list-group-flush">
 
-                          
-                         <ul> 
-							 {{#each BM}}
-                            <span ><strong>Date: {{this.date}} Time: {{this.time}} Style: {{this.style}} Amount: {{this.amount}} Speed: {{this.speed}} Comfort: {{this.comfort}}</strong></span> <br>
-                            
-                            <hr>
-                            {{/each}}
-                          
 
-                        </ul>
-                    </div>
-				
-				<button type="submit" id="BM-edit-btn" class="btn text-dark form-control custom">
-				<span>
-					<i class="fas fa-edit"></i>
-				</span>
-				edit my day
-			</button>
+					<ul>
+						{{#each BMs}}
+						<span><strong>Date: {{date}} <br> Time: {{time}} <br> Style: {{style}} <br> Amount:
+								{{amount}}
+								<br> Speed: {{speed}} <br>
+								Comfort: {{comfort}}</strong></span> <br>
+								 <i id="editBtn" class="fas fa-edit float-right text-muted edit-entry"></i>&nbsp; 
+        						 <i id="deleteBtn" class="fas fa-trash-alt float-right text-danger delete-entry"></i>
+     
+
+						<hr>
+						{{/each}}
+
+
+					</ul>
+				</div>
+
+				<button type="submit" {{!-- id="BM-edit-btn" --}} id="BM-modal-btn"
+					class="btn text-dark form-control custom" data-toggle="modal" data-target="#viewEntry">
+					<span>
+						<i class="fas fa-edit"></i>
+					</span>
+					edit my day
+				</button>
 			</div>
 		</div>
 
