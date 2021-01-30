@@ -11,34 +11,36 @@ module.exports = (sequelize, DataTypes) => {
     style: {
       type: DataTypes.STRING,
       validate: {
-        isIn: [["1", "2", "3", "4", "5"]],
+        isIn: [["liquid", "soft", "normal", "hard", "solid"]],
       },
       allowNull: false,
-      defaultValue: "3",
+      defaultValue: "normal",
     },
     amount: {
       type: DataTypes.STRING,
       validate: {
-        isIn: [["1", "2", "3"]],
+        isIn: [["little", "normal", "a lot"]],
       },
       allowNull: false,
-      defaultValue: "2",
+      defaultValue: "normal",
     },
     speed: {
       type: DataTypes.STRING,
       validate: {
-        isIn: [["1","2","3"]],
+        isIn: [["less than 5 mins", "5 - 10 mins", "more than 10 mins"]],
       },
       allowNull: false,
-      defaultValue: "2",
+      defaultValue: "5 - 10 mins",
     },
     comfort: {
       type: DataTypes.STRING,
       validate: {
-        isIn: [["1", "2", "3", "4", "5"]],
+        isIn: [
+          ["very uncomfortable", "comfortable", "it's okay", "nice", "great"],
+        ],
       },
       allowNull: false,
-      defaultValue: "3",
+      defaultValue: "it's okay",
     },
   });
 
