@@ -111,7 +111,21 @@ $(document).ready(() => {
       url: "/api/bm",
       data: bm,
     }).then((res) => {
-      return res.json(bm);
+      window.location.replace ("/bm");
     });
   });
+
+  $("#deleteBtn").on("click", (event) =>
+
+  function deleteBm(id) {
+    $.ajax({
+      method: "DELETE",
+      url: "/api/bm/" + id
+    })
+      .then(()=> {
+        window.location.replace("/bm")
+      });
+  }
+
+  )
 });

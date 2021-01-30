@@ -52,15 +52,18 @@ router.post("/api/bm", isAuthenticated, (req, res) => {
   });
 });
 
-router.put("/api/bm/:id", isAuthenticated, (req, res) => {
+router.put("/api/bm", isAuthenticated, (req, res) => {
   console.log(req.body);
-  BM.update(req.body, {
-    id: req.body.id,
+  BM.update( {
+    where: {
     time: req.body.time,
     date: req.body.date,
     style: req.body.style,
     amount: req.body.amount,
     category: req.body.category,
+    
+    
+    },
 
     where: {
       id: req.body.id,
@@ -70,6 +73,17 @@ router.put("/api/bm/:id", isAuthenticated, (req, res) => {
   });
 });
 
-router.delete("/api/bm/:id")
+router.delete("/api/bm/:id", (req,res)=>{
+  BM.destroy({
+    where:{
+      id : req.params.id
+    }
+  }).then((bm) =>{
+    if(bm) {
+      return res.json({success:true});
+    }
+    res.status(500).json({success:false});
+  })
+})
 
 module.exports = router;
