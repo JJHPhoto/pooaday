@@ -1,16 +1,7 @@
 
 		<div class="container-fluid px-0">
 			{{> nav }}
-			<!-- user name display -->
-			<h6 class="text-center"> <span class="member-name"> </span></h6>
-			<!-- date display // need to add display:none // for picked date  -->
-			<p class="h3 text-center" id="date-display"></p>
-			<!-- change date when it is picked from date picker -->
-			<p class="text-center">
-				<i class="fas fa-poop"></i> my  bowel movements 
-				<span id= "pickedDate"></span>
-			</p>
-
+			{{> name}}
 			<!-- when user enter new bm, each timestamp shown here  -->
 			<!-- bm form -->
 			<!-- remove this for mobile?????? -->
@@ -43,9 +34,10 @@
 							<div class="card-body text-center">
 								<p>adjust time</p>
 								<!-- time picker -->
-								<div class="timepicker">
+								<div class="timepicker-container"><div class="timepicker">
 									<input id="timepicker" width="270" placeholder="" />
-								</div>
+								</div></div>
+								
 								<!-- <input id="timepicker" width="276" /> -->
 
 								<span>
@@ -236,11 +228,11 @@
 							aria-labelledby="headingFive"
 							data-parent="#accordionMain"
 						>
-							<div class="card-body" id="comfortRating">
+							<div class="card-body  row justify-content-center" id="comfortRating">
 								<!-- emoji radio select   -->
 								<!-- default value is 3 (okay) -->
-								<div class="row">
-									<div class="form-check form-check-inline col rating px-4">
+								
+									<div class="form-check form-check-inline  rating ">
 										<input
 
 											class="comfort form-check-input"
@@ -253,7 +245,7 @@
 											><i class="bi bi-emoji-frown" style="font-size: 2rem"></i
 										></label>
 									</div>
-									<div class="form-check form-check-inline col rating px-4">
+									<div class="form-check form-check-inline  rating ">
 										<input
 											class="comfort form-check-input"
 											type="radio"
@@ -268,7 +260,7 @@
 											></i
 										></label>
 									</div>
-									<div class="form-check form-check-inline col rating px-4">
+									<div class="form-check form-check-inline rating ">
 										<input
 											class="comfort form-check-input"
 											type="radio"
@@ -283,7 +275,7 @@
 											></i
 										></label>
 									</div>
-									<div class="form-check form-check-inline col rating px-4">
+									<div class="form-check form-check-inline rating ">
 										<input
 											class="comfort form-check-input"
 											type="radio"
@@ -295,7 +287,7 @@
 											><i class="bi bi-emoji-smile" style="font-size: 2rem"></i
 										></label>
 									</div>
-									<div class="form-check form-check-inline col rating px-4">
+									<div class="form-check form-check-inline rating ">
 										<input
 											class="comfort form-check-input"
 											type="radio"
@@ -310,19 +302,20 @@
 											></i
 										></label>
 									</div>
-								</div>
+								
 
-								<p class="text-center" id="resultComfort"></p>
+								
 							</div>
+							<p class="text-center" id="resultComfort"></p>
 						</div>
 					</div>
 				</div>
 
 				<!-- edit / add buttons  -->
 				<div class="btn-group btnGroup">
-					<button
+					{{!-- <button
 						type="submit"
-						{{!-- id="BM-edit-btn" --}}
+						
 						id="BM-modal-btn"
 						class="btn text-dark form-control custom"
 						data-toggle="modal" data-target="#viewEntry"
@@ -331,7 +324,7 @@
 							<i class="fas fa-edit"></i>
 						</span>
 						edit my day
-					</button>
+					</button> --}}
 					<button
 						type="submit"
 						id="BM-add-btn"
@@ -344,7 +337,7 @@
 						add my day
 					</button>
 				</div>
-				{{> modal}}
+				
 				
 			</div>
 			{{> footer}}

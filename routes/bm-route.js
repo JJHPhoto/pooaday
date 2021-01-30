@@ -2,7 +2,6 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 const router = require("express").Router();
 const { BM } = require("../models");
 
-
 router.get("/api/bm", isAuthenticated, (req, res) => {
 	BM.findAll({
 		where: {
@@ -14,7 +13,7 @@ router.get("/api/bm", isAuthenticated, (req, res) => {
 });
 /////
 
-router.get("/bm", isAuthenticated, (req, res) => {
+router.get("/myentry", isAuthenticated, (req, res) => {
 	BM.findAll({
 		where: {
 			UserId: req.user.id,
@@ -26,7 +25,7 @@ router.get("/bm", isAuthenticated, (req, res) => {
 		console.log(results, "ressrersresr");
 		///// getting something... getting arrays
 
-		res.render("bm", results);
+		res.render("report", results);
 	});
 });
 /// not directing me to bm
@@ -47,6 +46,7 @@ router.post("/api/bm", isAuthenticated, (req, res) => {
 		amount: req.body.amount,
 		speed: req.body.speed,
 		comfort: req.body.comfort,
+		comfortNumber: req.body.comfortNumber,
 		UserId: req.user.id,
 	}).then((bm) => {
 		res.json(bm);

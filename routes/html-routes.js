@@ -4,33 +4,36 @@ const router = require("express").Router();
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 router.get("/", (req, res) => {
-  if (req.user) {
-    return res.redirect("/members");
-  }
-  res.render("index");
-  // res.sendFile(path.join(__dirname, "/signup.html"));
+	if (req.user) {
+		return res.redirect("/members");
+	}
+	res.render("index");
+	// res.sendFile(path.join(__dirname, "/signup.html"));
 });
 
 router.get("/signup", (req, res) => {
-  if (req.user) {
-    return res.redirect("/");
-  }
-  res.render("login");
+	if (!req.user) {
+		return res.redirect("/");
+	}
+	res.render("login");
 });
 
+router.get("/myentry", isAuthenticated, (req, res) => {
+	res.render("report");
+});
 router.get("/login", (req, res) => {
-  if (req.user) {
-    return res.redirect("/");
-  }
-  res.render("login");
+	if (req.user) {
+		return res.redirect("/");
+	}
+	res.render("login");
 });
 
 router.get("/members", isAuthenticated, (req, res) => {
-  res.render("members");
+	res.render("members");
 });
 
 router.get("/bm", isAuthenticated, (req, res) => {
-  res.render("bm");
+	res.render("bm");
 });
 
 module.exports = router;

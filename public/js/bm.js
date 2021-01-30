@@ -13,10 +13,9 @@ $(document).ready(() => {
 		sDate = sDate > 9 ? sDate : "0" + sDate;
 		return sYear + "-" + sMonth + "-" + sDate;
 	}
-
 	const convertedDate = convertDate(today);
-	console.log(convertDate(today), "today");
-	//////////////////
+
+	// converting num value from bm input and turn them into string value for database
 	const bmStyle = ["liquid", "soft", "normal", "hard", "solid"];
 	const bmAmount = ["little", "normal", "a lot"];
 	const bmSpeed = ["less than 5 mins", "5 - 10 mins", "more than 10 mins"];
@@ -63,6 +62,7 @@ $(document).ready(() => {
 				amount: bmAmount[amountIndex],
 				speed: bmSpeed[speedIndex],
 				comfort: bmComfort[comfortIndex],
+				comfortNumber: comfortIndex,
 			},
 		}).then((res) => {
 			console.log(res, "res");
@@ -96,21 +96,21 @@ $(document).ready(() => {
 	}
 
 	//////////////////////////
-	$("#BM-edit-btn").on("click", (event) => {
-		const date = $("#datepicker").val();
-		const time = $("#timepicker").val();
-		const style = $("#styleRange").val();
-		const amount = $("#amountRange").val();
-		const speed = $("#speedRange").val();
-		const comfort = $(".comfort:checked").val();
+	// $("#BM-edit-btn").on("click", (event) => {
+	// 	const date = $("#datepicker").val();
+	// 	const time = $("#timepicker").val();
+	// 	const style = $("#styleRange").val();
+	// 	const amount = $("#amountRange").val();
+	// 	const speed = $("#speedRange").val();
+	// 	const comfort = $(".comfort:checked").val();
 
-		const bm = { date, time, style, amount, speed, comfort };
-		$.ajax({
-			method: "PUT",
-			url: "/api/bm",
-			data: bm,
-		}).then((res) => {
-			return res.json(bm);
-		});
-	});
+	// 	const bm = { date, time, style, amount, speed, comfort };
+	// 	$.ajax({
+	// 		method: "PUT",
+	// 		url: "/api/bm",
+	// 		data: bm,
+	// 	}).then((res) => {
+	// 		return res.json(bm);
+	// 	});
+	// });
 });

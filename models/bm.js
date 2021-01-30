@@ -42,6 +42,9 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			defaultValue: "it's okay",
 		},
+		comfortNumber: {
+			type: DataTypes.INTEGER,
+		},
 	});
 
 	BM.associate = (models) => {

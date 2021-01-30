@@ -20,33 +20,40 @@ body {
 	mix-blend-mode: normal;
 }
 .customBtn:hover {
-	/* background-color: violet; */
-	/* cursor: pointer; */
+
 	mix-blend-mode: color-burn !important;
 }
 
-.customMY {
-	/* mix-blend-mode: color-burn; */
-	/* this changing text-color only  */
-}
+
 
 .btnGroup {
 	width: 100%;
 }
-.custom-range {
-	color: violet;
-}
+
 .rating > input {
 	display: none;
 	/* makes checkbox goaway */
 }
-/* Small devices (landscape phones, 544px and up)
-@media (min-width: 544px) {
-	.loginLogo {
-		font-size: 2rem !important;
-	}
-} */
+
 .timepicker {
 	display: flex;
 	justify-content: center;
+}
+.displayData{
+	background-color: transparent;
+	mix-blend-mode: normal;
+	
+}
+#editBtn{
+	font-size: 30px;
+}
+#deleteBtn{
+	font-size: 30px;
+}
+#dateCard{
+	font-size: 20px;
+}
+
+.timepickerContainer > gj-modal {
+	width: 270px;
 }
