@@ -12,9 +12,34 @@ router.get("/api/bm", isAuthenticated, (req, res) => {
 		res.json(bm);
 	});
 });
+/////
+
+router.get("/bm", isAuthenticated, (req, res) => {
+	BM.findAll({
+		where: {
+			UserId: req.user.id,
+		},
+	}).then((dbresults) => {
+		let resultsObj = dbresults.map((dbresult) => dbresult.toJSON());
+		let results = { BMs: resultsObj };
+		//BMs to views
+		console.log(results, "ressrersresr");
+		///// getting something... getting arrays
+
+		res.render("bm", results);
+	});
+});
+/// not directing me to bm
+
+///
 
 router.post("/api/bm", isAuthenticated, (req, res) => {
-	console.log(req.user);
+	console.log(req.user, "user");
+	console.log(req.params.id, "params");
+	// this returns undefined..................................
+	console.log(req.params, "paramsssss");
+	// retuns nothing..
+
 	BM.create({
 		date: req.body.date,
 		time: req.body.time,
@@ -24,8 +49,7 @@ router.post("/api/bm", isAuthenticated, (req, res) => {
 		comfort: req.body.comfort,
 		UserId: req.user.id,
 	}).then((bm) => {
-    res.json(bm);
-    
+		res.json(bm);
 	});
 });
 
