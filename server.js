@@ -22,7 +22,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(require("./routes"));
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync().then(() => {
 	app.listen(PORT, () => {
 		console.log(
 			"==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
