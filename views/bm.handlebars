@@ -204,7 +204,8 @@
 		<!-- edit / add buttons  -->
 		<div class="btn-group btnGroup">
 
-			<button type="submit" id="BM-modal-btn" class="btn text-dark form-control custom" data-toggle="modal" data-target="#viewEntry"> 
+			<button type="submit" id="BM-modal-btn" class="btn text-dark form-control custom" data-toggle="modal"
+				data-target="#viewEntry">
 
 				<span> <i class="fas fa-plus"></i></span>
 				add my day
@@ -218,23 +219,27 @@
 
 					<ul>
 						{{#each BMs}}
-						<span><strong>Date: {{date}} <br> Time: {{time}} <br> Style: {{style}} <br> Amount:
-								{{amount}}
-								<br> Speed: {{speed}} <br>
-								Comfort: {{comfort}}</strong></span> <br>
-								 <i id="editBtn" class="fas fa-edit float-right text-muted edit-entry"></i>&nbsp; 
-        						 <i id="deleteBtn" class="fas fa-trash-alt float-right text-danger delete-entry"></i>
-     
+						<span id="dateCard"><strong>Date: {{date}} <br> </strong></span> <br>
 
-						<hr>
-						{{/each}}
+						<span>
+							Time: {{time}} <br>
+							My bowel was {{style}} <br>
+							Amount was {{amount}} <br>
+							It took {{speed}} <br>
+							I felt {{comfort}}
+							<button  id="editBtn"  class="fas fa-edit float-right text-muted edit-entry "></button>
+
+							<button id="deleteBtn" type="submit"
+								class="fas fa-trash-alt float-right text-danger delete-entry"></button>
+							<hr>
+							{{/each}}
 
 
 					</ul>
 				</div>
 
-				<button type="submit" {{!-- id="BM-edit-btn" --}} id="BM-modal-btn"
-					class="btn text-dark form-control custom" data-toggle="modal" data-target="#viewEntry">
+				<button type="submit" {{!-- id="BM-edit-btn" --}} id="BM-edit-btn"
+					class="btn text-dark form-control custom">
 					<span>
 						<i class="fas fa-edit"></i>
 					</span>
