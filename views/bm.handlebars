@@ -227,10 +227,10 @@
 							Amount was {{amount}} <br>
 							It took {{speed}} <br>
 							I felt {{comfort}}
-							<button  id="editBtn"  class="fas fa-edit float-right text-muted edit-entry "></button>
+							<button  id="editBtn"  class="fas fa-edit float-right text-muted edit-entry" data-id="{{id}} " ></button>
 
 							<button id="deleteBtn" type="submit" 
-								class="fas fa-trash-alt float-right text-danger delete-entry"></button>
+								class="fas fa-trash-alt float-right text-danger delete-entry" data-id="{{id}}"></button>
 							<hr>
 							{{/each}}
 

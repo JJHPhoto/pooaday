@@ -97,7 +97,7 @@ $(document).ready(() => {
   }
 
   //////////////////////////
-  $("#BM-edit-btn").on("click", (event) => {
+  $("#editBtn").on("click", (event) => {
     const date = $("#datepicker").val();
     const time = $("#timepicker").val();
     const style = $("#styleRange").val();
@@ -105,19 +105,21 @@ $(document).ready(() => {
     const speed = $("#speedRange").val();
     const comfort = $(".comfort:checked").val();
 
-    const bm = { date, time, style, amount, speed, comfort };
+    const id = $(event.target).attr("data-id");
+    console.log(id);
+
+    const bm = { id, date, time, style, amount, speed, comfort };
     $.ajax({
       method: "PUT",
-      url: "/api/bm",
+      url: "/api/bm/" + id,
       data: bm,
     }).then((res) => {
       window.location.replace ("/bm");
     });
   });
 
-  $("#deleteBtn").on("click", (event) =>
-
-  function deleteBm(id) {
+  $("#deleteBtn").on("click", (event) =>{
+  const id = $(event.target).attr("data-id"); 
     $.ajax({
       method: "DELETE",
       url: "/api/bm/" + id
