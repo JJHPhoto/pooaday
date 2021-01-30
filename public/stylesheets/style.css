@@ -53,4 +53,11 @@ body {
 #displayData{
 	background-color: transparent;
 	mix-blend-mode: normal;
+	
+}
+#editBtn{
+	font-size: 30px;
+}
+#deleteBtn{
+	font-size: 30px;
 }
