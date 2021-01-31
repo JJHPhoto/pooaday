@@ -1,340 +1,642 @@
-<div class="container-fluid px-0">
-	{{> nav }}
-	<!-- user name display -->
-	<h6 class="text-center">Hello <span class="member-name">{{this.name}}</span></h6>
-	<!-- date display // need to add display:none // for picked date  -->
-	<p class="h3 text-center" id="date-display"></p>
-	<!-- change date when it is picked from date picker -->
-	<p class="text-center">
 
-	</p>
+		<div class="container-fluid px-0">
+		{{> nav }}
+			{{> name}}
 
-	<!-- main form -->
-	<!-- remove this for mobile?????? -->
-	<div class="container">
-		<div class="accordion" id="accordionMain">
-			<!-- 1. my bowel movements -->
-			<div class="card custom">
-				<div class="card-header" id="headingOne">
-					<h2 class="mb-0">
-						<button class="btn text-dark btn-block customBtn" type="button" data-toggle="collapse"
-							data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-							<span><img class="btnIcons" src="/img/poop-solid.svg" alt="poop-icon" /></span>
-							my bowel movements
-							<i class="bi bi-chevron-compact-down float-right"></i>
-						</button>
-					</h2>
-				</div>
-
-				<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionMain">
-					<div class="card-body text-center">
-						<!-- display number of today's bowelmovent from database  -->
-						1 bowel movement&nbsp;&nbsp;
-						<span>
-							<a class="btn btn-outline-secondary btn-sm" href="/bm" role="button">+ add new</a>
-						</span>
-					</div>
-				</div>
-			</div>
-			<!-- 2. my mood -->
-			<div class="card custom">
-				<div class="card-header" id="headingTwo">
-					<h2 class="mb-0">
-						<button class="btn collapsed btn-block text-dark customBtn" type="button" data-toggle="collapse"
-							data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-							<span><img class="btnIcons" src="/img/smile-regular.svg" alt="smile-icon" /></span>
-							my mood
-							<i class="bi bi-chevron-compact-down float-right"></i>
-						</button>
-					</h2>
-				</div>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionMain">
-					<div class="card-body" id="moodRating">
-						<!-- emoji list for radio input  -->
-						<!-- default value is 3 : okay-->
-
-						<div class="row">
-							<div class="form-check form-check-inline col rating px-4">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions"
-									id="moodVeryUnhappy" value="1" />
-								<label class="form-check-label" for="moodVeryUnhappy"><i class="bi bi-emoji-frown"
-										style="font-size: 2rem"></i></label>
-							</div>
-							<div class="form-check form-check-inline col rating px-4">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="moodUnhappy"
-									value="2" />
-								<label class="form-check-label" for="moodUnhappy"><i class="bi bi-emoji-expressionless"
-										style="font-size: 2rem"></i></label>
-							</div>
-							<div class="form-check form-check-inline col rating px-4">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="moodOkay"
-									value="3" />
-								<label class="form-check-label" for="moodOkay"><i class="bi bi-emoji-neutral"
-										style="font-size: 2rem"></i></label>
-							</div>
-							<div class="form-check form-check-inline col rating px-4">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="moodHappy"
-									value="4" />
-								<label class="form-check-label" for="moodHappy"><i class="bi bi-emoji-smile"
-										style="font-size: 2rem"></i></label>
-							</div>
-							<div class="form-check form-check-inline col rating px-4">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions"
-									id="moodVeryHappy" value="5" />
-								<label class="form-check-label" for="moodVeryHappy">
-									<i class="bi bi-emoji-sunglasses" style="font-size: 2rem"></i></label>
-							</div>
+			<!-- main form -->
+			<!-- remove this for mobile?????? -->
+			<div class="container">
+				<div class="accordion" id="accordionMain">
+					<!-- 1. my bowel movements -->
+					<div class="card custom">
+						<div class="card-header" id="headingOne">
+							<h2 class="mb-0">
+								<button
+									class="btn text-dark btn-block customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseOne"
+									aria-expanded="false"
+									aria-controls="collapseOne"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/poop-solid.svg"
+											alt="poop-icon"
+									/></span>
+									my bowel movements
+									<i class="bi bi-chevron-compact-down float-right"></i>
+								</button>
+							</h2>
 						</div>
-						<p class="text-center" id="resultMood"></p>
-					</div>
-				</div>
-			</div>
-			<!-- 3. water intake -->
-			<div class="card custom">
-				<div class="card-header" id="headingThree">
-					<h2 class="mb-0">
-						<button class="btn collapsed btn-block text-dark customBtn" type="button" data-toggle="collapse"
-							data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							<span><img class="btnIcons" src="/img/water.svg" alt="water-icon" /></span>
-							water intake
-							<i class="bi bi-chevron-compact-down float-right"></i>
-						</button>
-					</h2>
-				</div>
-				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionMain">
-					<div class="card-body text-center" id="waterIntake">
-						<!-- water bottle list for radio input  -->
-						<!-- default value is 1 :bottle -->
 
-						<div class="form-check form-check-inline rating">
-							<input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="1bottle"
-								value="1" />
-							<label class="form-check-label" for="1bottle"><i class="bi bi-droplet"
-									style="font-size: 2rem"></i></label>
-						</div>
-						<div class="form-check form-check-inline rating">
-							<input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="2bottle"
-								value="22" />
-							<label class="form-check-label" for="2bottle"><i class="bi bi-droplet"
-									style="font-size: 2rem"></i></label>
-						</div>
-						<div class="form-check form-check-inline rating">
-							<input class="form-check-input" type="radio" name="inlineRadioOptions"
-								id="inlineRadio2andTwo" value="option2" />
-							<label class="form-check-label" for="inlineRadio2"><i class="bi bi-droplet"
-									style="font-size: 2rem"></i></label>
-						</div>
-						<div class="form-check form-check-inline rating">
-							<input class="form-check-input" type="radio" name="inlineRadioOptions"
-								id="inlineRadio2andTwo" value="option2" />
-							<label class="form-check-label" for="inlineRadio2"><i class="bi bi-droplet"
-									style="font-size: 2rem"></i></label>
-						</div>
-						<div class="form-check form-check-inline rating">
-							<input class="form-check-input" type="radio" name="inlineRadioOptions"
-								id="inlineRadio2andTwo" value="option2" />
-							<label class="form-check-label" for="inlineRadio2"><i class="bi bi-droplet"
-									style="font-size: 2rem"></i></label>
-						</div>
-						<div class="form-check form-check-inline rating">
-							<input class="form-check-input" type="radio" name="inlineRadioOptions"
-								id="inlineRadio2andTwo" value="option2" />
-							<label class="form-check-label" for="inlineRadio2"><i class="bi bi-droplet"
-									style="font-size: 2rem"></i></label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 4. food intake  -->
-			<div class="card custom">
-				<div class="card-header" id="headingFour">
-					<h2 class="mb-0">
-						<button class="btn collapsed btn-block text-dark customBtn" type="button" data-toggle="collapse"
-							data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-							<span><img class="btnIcons" src="/img/take-away.svg" alt="food-icon" /></span>
-							food intake
-							<i class="bi bi-chevron-compact-down float-right"></i>
-						</button>
-					</h2>
-
-
-
-
-					<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionMain">
-						<div class="card-body">
-							<!-- food choices icons -->
-							<!-- checkbox for multiple choices -->
-							<div class="form-check form-check-inline rating">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions"
-									id="inlineRadio2andTwo" value="option2" />
-								<label class="form-check-label" for="inlineRadio2"><i class="fas fa-bread-slice"
-										style="font-size: 2rem"></i></label>
-
-							</div>
-							<div class="form-check form-check-inline rating">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions"
-									id="inlineRadio2andTwo" value="option2" />
-								<label class="form-check-label" for="inlineRadio2"><i class="fas fa-hamburger"
-										style="font-size: 2rem"></i></label>
-
-							</div>
-							<div class="form-check form-check-inline rating">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions"
-									id="inlineRadio2andTwo" value="option2" />
-								<label class="form-check-label" for="inlineRadio2"><i class="fas fa-pizza-slice"
-										style="font-size: 2rem"></i></label>
-
+						<div
+							id="collapseOne"
+							class="collapse"
+							aria-labelledby="headingOne"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body text-center">
+								<!-- display number of today's bowelmovent from database  -->
+								1 bowel movement&nbsp;&nbsp;
+								<span>
+									<a
+										class="btn btn-outline-secondary btn-sm"
+										href="/bm"
+										role="button"
+										>+ add new</a
+									>
+								</span>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- 5. physical activity level -->
-				<div class="card custom">
-					<div class="card-header" id="headingFive">
-						<h2 class="mb-0">
-							<button class="btn collapsed btn-block text-dark customBtn" type="button"
-								data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
-								aria-controls="collapseFive">
-								<span><img class="btnIcons" src="/img/running-solid.svg" alt="running-icon" /></span>
-								physical activity level
-								<i class="bi bi-chevron-compact-down float-right"></i>
-							</button>
-						</h2>
+					<!-- 2. my mood -->
+					<div class="card custom">
+						<div class="card-header" id="headingTwo">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseTwo"
+									aria-expanded="false"
+									aria-controls="collapseTwo"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/smile-regular.svg"
+											alt="smile-icon"
+									/></span>
+									my mood 
+									<i class="bi bi-chevron-compact-down float-right"></i>
+								</button>
+							</h2>
+						</div>
+						<div
+							id="collapseTwo"
+							class="collapse"
+							aria-labelledby="headingTwo"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body row justify-content-center" id="moodRating">
+								<!-- mood choices icons -->
+								<!--  radio choices -->
+
+										<div class="form-check form-check-inline rating">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodVeryUnhappy"
+											value="1"
+										/>
+										<label class="form-check-label" for="moodVeryUnhappy"
+											><i class="bi bi-emoji-frown" style="font-size: 2rem"></i
+										></label>
+									</div>
+								
+									
+									<div class="form-check form-check-inline rating ">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodUnhappy"
+											value="2"
+										/>
+										<label class="form-check-label" for="moodUnhappy"
+											><i
+												class="bi bi-emoji-expressionless"
+												style="font-size: 2rem"
+											></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline rating ">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodOkay"
+											value="3"
+										/>
+										<label class="form-check-label" for="moodOkay"
+											><i
+												class="bi bi-emoji-neutral"
+												style="font-size: 2rem"
+											></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline rating ">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodHappy"
+											value="4"
+										/>
+										<label class="form-check-label" for="moodHappy"
+											><i class="bi bi-emoji-smile" style="font-size: 2rem"></i
+										></label>
+									</div>
+									<div class="form-check form-check-inline rating">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodVeryHappy"
+											value="5"
+										/>
+										<label class="form-check-label" for="moodVeryHappy">
+											<i
+												class="bi bi-emoji-sunglasses"
+												style="font-size: 2rem"
+											></i
+										></label>
+									</div>
+
+							</div>
+								<p class="text-center" id="resultMood"></p>
+							
+						</div>
 					</div>
+					<!-- 3. water intake -->
+					<div class="card custom">
+						<div class="card-header" id="headingThree">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseThree"
+									aria-expanded="false"
+									aria-controls="collapseThree"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/water.svg"
+											alt="water-icon"
+									/></span>
+									water intake
+									<i class="bi bi-chevron-compact-down float-right"></i>
+								</button>
+							</h2>
+						</div>
+						<div
+							id="collapseThree"
+							class="collapse"
+							aria-labelledby="headingThree"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body row justify-content-center" id="waterIntake">
+								<!-- water bottle list for radio input  -->
+								<!-- default value is 1 :bottle -->
 
-					<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionMain">
-						<div class="card-body">
-							<!-- physical activity level choice radio input  -->
-							<!-- default value is 3 :normal -->
-							<div class="activity-range">
-								<label for="activityRange"></label>
-
-								<input type="range" class="form-control-range" id="activityRange" min="1" max="3"
-									value="1" />
-								<div class="row speedText">
-									<div class="col">little</div>
-									<div class="col text-center">moderate</div>
-									<div class="col text-right">vigorous</div>
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="checkbox"
+										name="inlineRadioOptions"
+										id="1bottle"
+										value="1"
+									/>
+									<label class="form-check-label" for="1bottle"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
 								</div>
-
-								<div id="resultAmount" class="text-center">
-
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="checkbox"
+										name="inlineRadioOptions"
+										id="2bottle"
+										value="22"
+									/>
+									<label class="form-check-label" for="2bottle"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- 6. sleep quality  -->
-				<div class="card custom">
-					<div class="card-header" id="headingSix">
-						<h2 class="mb-0">
-							<button class="btn collapsed btn-block text-dark customBtn" type="button"
-								data-toggle="collapse" data-target="#collapseSix" aria-expanded="false"
-								aria-controls="collapseSix">
-								<span><img class="btnIcons" src="/img/moon-regular.svg" alt="moon-icon" /></span>
-								sleep quality
-								<i class="bi bi-chevron-compact-down float-right"></i>
-							</button>
-						</h2>
-					</div>
-
-					<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionMain">
-						<div class="card-body">
-							<!-- sleep quality radio input -->
-							<!-- default is 3 :normal -->
-							<div class="sleep-range">
-								<label for="sleepRange"></label>
-
-								<input type="range" class="form-control-range" id="sleepRange" min="1" max="3"
-									value="1" />
-								<div class="row speedText">
-									<div class="col">little</div>
-									<div class="col text-center">normal</div>
-									<div class="col text-right">a lot</div>
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="inlineRadioOptions"
+										id="inlineRadio2andTwo"
+										value="option2"
+									/>
+									<label class="form-check-label" for="inlineRadio2"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
 								</div>
-
-								<div id="resultAmount" class="text-center">
-
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="inlineRadioOptions"
+										id="inlineRadio2andTwo"
+										value="option2"
+									/>
+									<label class="form-check-label" for="inlineRadio2"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- 7. medication -->
-				<div class="card custom">
-					<div class="card-header customMY" id="headingSeven">
-						<h2 class="mb-0">
-							<button class="btn collapsed btn-block text-dark customBtn" type="button"
-								data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false"
-								aria-controls="collapseSeven">
-								<span><img class="btnIcons" src="/img/pills.svg" alt="pill-icon" /></span>
-								medication
-								<i class="bi bi-chevron-compact-down float-right"></i>
-							</button>
-						</h2>
-					</div>
-
-					<div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
-						data-parent="#accordionMain">
-						<div class="card-body">
-							<!-- short text input area -->
-							<!-- showing list of medication user input -->
-							<!-- add/remove medication -->
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Medication input"
-									aria-label="Medication input" aria-describedby="basic-addon2">
-								<div class="input-group-append">
-									<button class="btn btn-outline-secondary" type="button">Add</button>
-
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="inlineRadioOptions"
+										id="inlineRadio2andTwo"
+										value="option2"
+									/>
+									<label class="form-check-label" for="inlineRadio2"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
+								</div>
+								<div class="form-check form-check-inline rating">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="inlineRadioOptions"
+										id="inlineRadio2andTwo"
+										value="option2"
+									/>
+									<label class="form-check-label" for="inlineRadio2"
+										><i class="bi bi-droplet" style="font-size: 2rem"></i
+									></label>
 								</div>
 							</div>
 						</div>
-						<!-- 8. my note  -->
-						<div class="card custom">
-							<div class="card-header" id="headingEight">
-								<h2 class="mb-0">
-									<button class="btn collapsed btn-block text-dark customBtn" type="button"
-										data-toggle="collapse" data-target="#collapseEight" aria-expanded="false"
-										aria-controls="collapseEight">
-										<span><img class="btnIcons" src="/img/clipboard-regular.svg"
-												alt="note-icon" /></span>
-										my note
-										<i class="bi bi-chevron-compact-down float-right"></i>
-									</button>
-								</h2>
-							</div>
+					</div>
+					<!-- 4. food intake  -->
+					<div class="card custom">
+						<div class="card-header" id="headingFour">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseFour"
+									aria-expanded="false"
+									aria-controls="collapseFour"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/take-away.svg"
+											alt="food-icon"
+									/></span>
+									food intake
+									<i class="bi bi-chevron-compact-down float-right"></i>
+								</button>
+							</h2>
+						</div>
 
-							<div id="collapseEight" class="collapse" aria-labelledby="headingEight"
-								data-parent="#accordionMain">
-								<div class="card-body">
-									<!-- large text area input  -->
-									<!-- limit 200 -->
-									<!-- edit/remove -->
-									<div class="form-group">
-										<label for="notes">My Notes</label>
-										<textarea class="form-control" id="exampleFormControlTextarea1"
-											rows="5"></textarea>
+						<div
+							id="collapseFour"
+							class="collapse"
+							aria-labelledby="headingFour"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body row justify-content-center">
+								<!-- food choices icons -->
+								<!-- checkbox for multiple choices -->
+
+										<div class="form-check form-check-inline rating">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodVeryUnhappy"
+											value="1"
+										/>
+										<label class="form-check-label" for="moodVeryUnhappy"
+											>
+											<img
+											class="btnIcons"
+											src="/img/coffee.svg"
+											alt="food-icon"
+									/>
+										
+										</label>
+									</div>
+								
+									
+									<div class="form-check form-check-inline rating ">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodUnhappy"
+											value="2"
+										/>
+										<label class="form-check-label" for="moodUnhappy"
+											>
+											<img
+											class="btnIcons"
+											src="/img/take-away.svg"
+											alt="food-icon"
+									/>
+										
+										</label>
+									</div>
+									<div class="form-check form-check-inline rating ">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodOkay"
+											value="3"
+										/>
+										<label class="form-check-label" for="moodOkay"
+											>
+											<img
+											class="btnIcons"
+											src="/img/dish.svg"
+											alt="food-icon"
+									/>
+										</label>
+									</div>
+									<div class="form-check form-check-inline rating ">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodHappy"
+											value="4"
+										/>
+										<label class="form-check-label" for="moodHappy"
+											>
+										<img
+											class="btnIcons"
+											src="/img/healthy-food.svg"
+											alt="food-icon"
+									/>
+										</label>
+									</div>
+									<div class="form-check form-check-inline rating">
+										<input
+											class="form-check-input"
+											type="radio"
+											name="inlineRadioOptions"
+											id="moodVeryHappy"
+											value="5"
+										/>
+										<label class="form-check-label" for="moodVeryHappy">
+										<img
+											class="btnIcons"
+											src="/img/snack.svg"
+											alt="food-icon"
+									/>
+										</label>
+									</div>
+
+							</div>
+						</div>
+					</div>
+					<!-- 5. physical activity level -->
+					<div class="card custom">
+						<div class="card-header" id="headingFive">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseFive"
+									aria-expanded="false"
+									aria-controls="collapseFive"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/running-solid.svg"
+											alt="running-icon"
+									/></span>
+									physical activity level
+									<i class="bi bi-chevron-compact-down float-right"></i>
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseFive"
+							class="collapse"
+							aria-labelledby="headingFive"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- physical activity level choice radio input  -->
+								<!-- default value is 3 :normal -->
+
+								<div class="activity-range">
+									<label for="styleRange"></label>
+
+									<input
+										type="range"
+										class="form-control-range"
+										id="styleRange"
+										min="1"
+										max="5"
+										value="1"
+									/>
+									<div class="row speedText">
+										<div class="col">little</div>
+										
+										<div class="col text-right">vigorous</div>
+									</div>
+									<div id="resultStyle" class="text-center">
+									
 									</div>
 								</div>
+
+
+
 							</div>
 						</div>
 					</div>
-					<!-- edit / add buttons  -->
-					<div class="btn-group btnGroup">
-						<button type="submit" id="edit-btn" class="btn text-dark form-control custom">
-							<span>
-								<i class="fas fa-edit"></i>
-							</span>
-							edit my day
-						</button>
-						<button type="submit" id="add-btn" class="btn text-dark form-control custom">
-							<span> <i class="fas fa-plus"></i></span>
+					<!-- 6. sleep quality  -->
+					<div class="card custom">
+						<div class="card-header" id="headingSix">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseSix"
+									aria-expanded="false"
+									aria-controls="collapseSix"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/moon-regular.svg"
+											alt="moon-icon"
+									/></span>
+									sleep quality
+									<i class="bi bi-chevron-compact-down float-right"></i>
+								</button>
+							</h2>
+						</div>
 
+						<div
+							id="collapseSix"
+							class="collapse"
+							aria-labelledby="headingSix"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- sleep quality radio input -->
+								<!-- default is 3 :normal -->
+								<div class="activity-range">
+									<label for="styleRange"></label>
 
-							add my day
-						</button>
+									<input
+										type="range"
+										class="form-control-range"
+										id="styleRange"
+										min="1"
+										max="5"
+										value="1"
+									/>
+									<div class="row speedText">
+										<div class="col">poor</div>
+										
+										<div class="col text-right">relaxed</div>
+									</div>
+									<div id="resultStyle" class="text-center">
+									
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<!-- 7. medication -->
+					<div class="card custom">
+						<div class="card-header customMY" id="headingSeven">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseSeven"
+									aria-expanded="false"
+									aria-controls="collapseSeven"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/pills.svg"
+											alt="pill-icon"
+									/></span>
+									medication
+									<i class="bi bi-chevron-compact-down float-right"></i>
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseSeven"
+							class="collapse"
+							aria-labelledby="headingSeven"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- short text input area -->
+								<!-- showing list of medication user input -->
+								<!-- add/remove medication -->
+								<form>
+									<div class="form-group">
+										<label for="exampleFormControlInput1"></label>
+										<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="add new medication">
+									</div>
+									<div class="form-group">
+										<label for="exampleFormControlSelect1">select your meds</label>
+										<select class="form-control" id="exampleFormControlSelect1">
+										<option>multi-vitamin</option>
+										<option>iron</option>
+										<option>d-3</option>
+										<option>probiotic</option>
+										<option>lutein</option>
+										</select>
+									</div>
+									
+									
+								</form>
+
+							</div>
+						</div>
+					</div>
+					<!-- 8. my note  -->
+					<div class="card custom">
+						<div class="card-header" id="headingEight">
+							<h2 class="mb-0">
+								<button
+									class="btn collapsed btn-block text-dark customBtn"
+									type="button"
+									data-toggle="collapse"
+									data-target="#collapseEight"
+									aria-expanded="false"
+									aria-controls="collapseEight"
+								>
+									<span
+										><img
+											class="btnIcons"
+											src="/img/clipboard-regular.svg"
+											alt="note-icon"
+									/></span>
+									my note
+									<i class="bi bi-chevron-compact-down float-right"></i>
+								</button>
+							</h2>
+						</div>
+
+						<div
+							id="collapseEight"
+							class="collapse"
+							aria-labelledby="headingEight"
+							data-parent="#accordionMain"
+						>
+							<div class="card-body">
+								<!-- large text area input  -->
+								<!-- limit 200 -->
+								<!-- edit/remove -->
+								 
+								<div class="form-group">
+									<label for="exampleFormControlTextarea1"></label>
+									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="any thought?"></textarea>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				{{> footer}}
+				<!-- edit / add buttons  -->
+				<div class="btn-group btnGroup">
+					<button
+						type="submit"
+						id="edit-btn"
+						class="btn text-dark form-control custom"
+					>
+						<span>
+							<i class="fas fa-edit"></i>
+						</span>
+						edit my day
+					</button>
+					<button
+						type="submit"
+						id="add-btn"
+						class="btn text-dark form-control custom"
+					>
+						<span> <i class="fas fa-plus"></i></span>
+							
+						
+						add my day
+					</button>
+				</div>
 			</div>
+			{{> footer}}
+		</div>
+
+

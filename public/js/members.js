@@ -7,7 +7,12 @@ $(document).ready(() => {
 	$("#datepicker").datepicker({
 		format: "yyyy-mm-dd",
 	});
-	$("#timepicker").timepicker();
+	$("#timepicker").timepicker({
+		modal: false,
+		header: false,
+		footer: false,
+	});
+	// this will make popup goway but then have to click well too see time
 
 	// pickeddate display
 	$("#datepicker").on("change", function () {
