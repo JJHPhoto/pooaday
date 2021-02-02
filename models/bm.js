@@ -36,14 +36,15 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			validate: {
 				isIn: [
-					["very uncomfortable", "comfortable", "it's okay", "nice", "great"],
+					["very uncomfortable", "uncomfortable", "it's okay", "nice", "great"],
 				],
 			},
 			allowNull: false,
 			defaultValue: "it's okay",
 		},
-		comfortNumber: {
+		comfortRating: {
 			type: DataTypes.INTEGER,
+			allowNull: false,
 		},
 	});
 

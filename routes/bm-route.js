@@ -46,7 +46,7 @@ router.post("/api/bm", isAuthenticated, (req, res) => {
 		amount: req.body.amount,
 		speed: req.body.speed,
 		comfort: req.body.comfort,
-		comfortNumber: req.body.comfortNumber,
+		comfortRating: req.body.comfortRating,
 		UserId: req.user.id,
 	}).then((bm) => {
 		res.json(bm);

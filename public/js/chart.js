@@ -9,7 +9,7 @@ function getChart(user) {
 		bms = data;
 		console.log(bms[1].date);
 		// showing correct data
-		const comfortArray = bms.map((bm) => bm.comfortNumber + 1);
+		const comfortArray = bms.map((bm) => bm.comfortRating);
 		console.log(comfortArray, "array");
 		const totalComfort = comfortArray.reduce((prev, curr) => {
 			console.log(curr, "prev");

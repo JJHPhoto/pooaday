@@ -21,7 +21,7 @@ $(document).ready(() => {
 	const bmSpeed = ["less than 5 mins", "5 - 10 mins", "more than 10 mins"];
 	const bmComfort = [
 		"very uncomfortable",
-		"comfortable",
+		"uncomfortable",
 		"it's okay",
 		"nice",
 		"great",
@@ -51,7 +51,7 @@ $(document).ready(() => {
 		const speedIndex = parseInt(speed) - 1;
 		const comfort = $(".comfort:checked").val();
 		const comfortIndex = parseInt(comfort) - 1;
-		console.log(comfort);
+		console.log(comfort, "line 54");
 		$.ajax({
 			method: "POST",
 			url: "/api/bm",
@@ -62,7 +62,7 @@ $(document).ready(() => {
 				amount: bmAmount[amountIndex],
 				speed: bmSpeed[speedIndex],
 				comfort: bmComfort[comfortIndex],
-				comfortNumber: comfortIndex,
+				comfortRating: parseInt(comfort),
 			},
 		}).then((res) => {
 			console.log(res, "res");
