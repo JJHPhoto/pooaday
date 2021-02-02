@@ -15,19 +15,19 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 app.use(
-	session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(require("./routes"));
 
-db.sequelize.sync({ force: true }).then(() => {
-	app.listen(PORT, () => {
-		console.log(
-			"==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-			PORT,
-			PORT
-		);
-	});
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(
+      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      PORT,
+      PORT
+    );
+  });
 });
