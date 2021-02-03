@@ -119,6 +119,20 @@ $(document).ready(() => {
 			// showing correct data
 		});
 	}
+	$("#BM-delete-btn").on("click", (event) =>{
+		const id = $(event.target).attr("data-id"); 
+		  $.ajax({
+			method: "DELETE",
+			url: "/api/bm/" + id
+		  })
+			.then(()=> {
+			  window.location.replace("/myentry")
+			});
+		}
+		
+		)
+		
+		
 
 	//////////////////////////
 	// $("#BM-edit-btn").on("click", (event) => {
@@ -138,4 +152,5 @@ $(document).ready(() => {
 	// 		return res.json(bm);
 	// 	});
 	// });
+		
 });

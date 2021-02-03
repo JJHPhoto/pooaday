@@ -67,4 +67,18 @@ router.put("/api/bm", isAuthenticated, (req, res) => {
 	});
 });
 
+router.delete("/api/bm/:id", (req,res)=>{
+  BM.destroy({
+    where:{
+      id : req.params.id
+    }
+  }).then((bm) =>{
+    if(bm) {
+      return res.json({success:true});
+    }
+    res.status(500).json({success:false});
+  })
+})
+
+
 module.exports = router;
