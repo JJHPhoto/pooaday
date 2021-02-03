@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			defaultValue: "normal",
 		},
+		styleRating: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
 		amount: {
 			type: DataTypes.STRING,
 			validate: {
@@ -24,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			defaultValue: "normal",
 		},
+		amountRating: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
 		speed: {
 			type: DataTypes.STRING,
 			validate: {
@@ -31,6 +39,10 @@ module.exports = (sequelize, DataTypes) => {
 			},
 			allowNull: false,
 			defaultValue: "5 - 10 mins",
+		},
+		speedRating: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
 		},
 		comfort: {
 			type: DataTypes.STRING,

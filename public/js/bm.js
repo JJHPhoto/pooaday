@@ -1,6 +1,23 @@
 $(document).ready(() => {
 	let today = new Date();
 	const date = today.toDateString();
+	console.log(date, "date");
+	/////
+	// let curTime = today.getHours() + ":" + today.getMinutes() + ":00";
+	// console.log(curTime, "timeee");
+	/////
+
+	function getTime() {
+		today = new Date();
+		let sHour = today.getHours();
+		let sMin = today.getMinutes();
+		sHour = sHour > 9 ? sHour : "0" + sHour;
+		sMin = sMin > 9 ? sMin : "0" + sMin;
+		return sHour + ":" + sMin + ":00";
+	}
+	console.log(getTime(today), "curTime");
+	const curTime = getTime(today);
+	console.log(curTime);
 
 	$("#date-display").text(date);
 
@@ -14,6 +31,11 @@ $(document).ready(() => {
 		return sYear + "-" + sMonth + "-" + sDate;
 	}
 	const convertedDate = convertDate(today);
+
+	$("#timepicker").on("change", () => {
+		const pickedTime = $("input#timepicker").val();
+		console.log(pickedTime, "picked Time");
+	});
 
 	// converting num value from bm input and turn them into string value for database
 	const bmStyle = ["liquid", "soft", "normal", "hard", "solid"];
@@ -59,8 +81,11 @@ $(document).ready(() => {
 				date: date,
 				time: time,
 				style: bmStyle[styleIndex],
+				styleRating: parseInt(style),
 				amount: bmAmount[amountIndex],
+				amountRating: parseInt(amount),
 				speed: bmSpeed[speedIndex],
+				speedRating: parseInt(speed),
 				comfort: bmComfort[comfortIndex],
 				comfortRating: parseInt(comfort),
 			},
