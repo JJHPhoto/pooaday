@@ -43,10 +43,13 @@ router.post("/api/bm", isAuthenticated, (req, res) => {
 		date: req.body.date,
 		time: req.body.time,
 		style: req.body.style,
+		styleRating: req.body.styleRating,
 		amount: req.body.amount,
+		amountRating: req.body.amountRating,
 		speed: req.body.speed,
+		speedRating: req.body.speedRating,
 		comfort: req.body.comfort,
-		comfortNumber: req.body.comfortNumber,
+		comfortRating: req.body.comfortRating,
 		UserId: req.user.id,
 	}).then((bm) => {
 		res.json(bm);
@@ -64,18 +67,17 @@ router.put("/api/bm", isAuthenticated, (req, res) => {
 	});
 });
 
-router.delete("/api/bm/:id", (req,res)=>{
-  BM.destroy({
-    where:{
-      id : req.params.id
-    }
-  }).then((bm) =>{
-    if(bm) {
-      return res.json({success:true});
-    }
-    res.status(500).json({success:false});
-  })
-})
-
+router.delete("/api/bm/:id", (req, res) => {
+	BM.destroy({
+		where: {
+			id: req.params.id,
+		},
+	}).then((bm) => {
+		if (bm) {
+			return res.json({ success: true });
+		}
+		res.status(500).json({ success: false });
+	});
+});
 
 module.exports = router;
