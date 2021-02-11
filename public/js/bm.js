@@ -195,7 +195,7 @@ $(document).ready(() => {
 	}
 
 	// ********************************** Deleting
-	$("#BM-delete-btn").on("click", (event) => {
+	$(".deleteBtn").on("click", (event) => {
 		const id = $(event.target).attr("data-id");
 		$.ajax({
 			method: "DELETE",
