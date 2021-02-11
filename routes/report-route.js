@@ -1,6 +1,6 @@
-// const isAuthenticated = require("../config/middleware/isAuthenticated");
-// const router = require("express").Router();
-// const { BM } = require("../models");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
+const router = require("express").Router();
+const { Report } = require("../models");
 
 // router.get("/api/bm", isAuthenticated, (req, res) => {
 //   BM.findAll({

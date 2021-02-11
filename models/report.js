@@ -49,6 +49,13 @@ module.exports = function (sequelize, DataTypes) {
 			allowNull: false
 		  }
 		});
+		Report.associate = (models) => {
+			Report.belongsTo(models.User, {
+				foreignKey: {
+					allowNull: false,
+				},
+			});
+		};
 		return Report;
 	};
 	
