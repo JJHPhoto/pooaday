@@ -34,7 +34,8 @@ router.post("/api/members", isAuthenticated, (req,re)=>{
         food: req.body.food,
         activity: req.body.activity,
         sleep: req.body.sleep,
-        medication: req.body.medication
+        medication: req.body.medication,
+        UserId: req.user.id,
 
 
     }).then((result)=>{

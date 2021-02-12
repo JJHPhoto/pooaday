@@ -2,6 +2,7 @@
 //commented out till we use, if we use.
 const router = require("express").Router();
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const db = require("../models");
 
 router.get("/", (req, res) => {
 	if (req.user) {
@@ -28,13 +29,18 @@ router.get("/login", (req, res) => {
 	res.render("login");
 });
 
-router.get("/members", isAuthenticated, (req, res) => {
-	res.render("members");
-});
+router.get("/members", isAuthenticated, async (req, res) => {
+	const report = await db.Report.findAll({
+	  where: {UserId: req.user.id},
+	  raw:true
+	})
+	res.render("members", {Report: report});
+  });
 
 router.get("/bm", isAuthenticated, (req, res) => {
 	res.render("bm");
 });
+
 
 module.exports = router;
 // router.get("/report", isAuthenticated, (req, res) => {

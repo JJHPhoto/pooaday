@@ -11,8 +11,8 @@ $(document).ready(() => {
 	];
 	const dlFood = ["breakfast", "lunch", "dinner", "fruit & veggies", "snacks"];
 	const dlActivity = [
-		"very litte",
-		"lightly",
+		"very little",
+		"light",
 		"moderate",
 		"active",
 		"vigorous",

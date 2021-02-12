@@ -24,35 +24,39 @@ module.exports = function (sequelize, DataTypes) {
 			validate:{
 				isIn:[["breakfast", "lunch", "dinner", "fruit & veggies", "snacks"]]
 			},
-			allowNull: false,
+			
 		  },
 		  activity:{
 			type: DataTypes.STRING,
 			validate: {
-			  isIn:[["very litte",
-			  "lightly",
+			  isIn:[["very little",
+			  "light",
 			  "moderate",
 			  "active",
 			  "vigorous", ]],
 			},
-			allowNull: false,
+			
 		  },
 		  sleep :{
 			type: DataTypes.STRING,
 			validate: {
 			  isIn : [["poor", "bad", "okay", "good", "relaxed"]]
 			},
-			allowNull: false,
+			
 		  },
 		  medication: {
 			type: DataTypes.STRING,
-			allowNull: false
+			
+		  },
+		  note: {
+			type: DataTypes.STRING,
+			
 		  }
 		});
 		Report.associate = (models) => {
 			Report.belongsTo(models.User, {
 				foreignKey: {
-					allowNull: false,
+				allowNull: false,
 				},
 			});
 		};

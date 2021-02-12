@@ -1,7 +1,7 @@
 $(document).ready(() => {
 	// ********************************** user name display
 	$.get("/api/user_data").then((user) => {
-		$(".member-name").text(` hello , ${user.name} ! `);
+		$(".member-name").text(` Hello , ${user.name} ! `);
 	});
 	// ********************************** datepicker/timepicker setup
 	$("#datepicker").datepicker({
