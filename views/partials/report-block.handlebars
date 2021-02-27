@@ -2,8 +2,6 @@
 	{{#if BMs}}
 	<h5 class="text-center pt-4">My entry</h5>
 	<div class="card col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto displayData" data-id="{{id}}">
-
-
 		<div class="card-body ">
 
 			{{#each BMs}}
@@ -24,7 +22,7 @@
 							<span>
 								<i class="fas fa-edit"></i>
 							</span>
-							Edit my day
+							Edit Entry
 						</button>
 						<button type="submit" id="BM-delete-btn" data-id="{{id}}"
 							class=" deleteBtn btn text-dark form-control custom d-flex justify-content-center">
@@ -36,26 +34,60 @@
 
 
 				</li>
-
-
-
-
 			</ul>
 
 			{{/each}}
-
-
-
-
 		</div>
-
-
-
-
 	</div>
-
 </div>
 
-</div>
+
 {{/if}}
 
+<div class="">
+	{{#if Reports}}
+	<h5 class="text-center pt-4">My entry</h5>
+	<div class="card col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto displayData" data-id="{{id}}">
+		<div class="card-body ">
+
+			{{#each Reports}}
+
+			<ul class="list-group list-group-flush ">
+				<li class="list-group-item displayData">
+					<span id="dateCard"><strong>Date: {{date}} <br> </strong></span>
+
+					<span>
+					Mood: {{mood}} <br>
+						 {{water}} <br>
+						 {{food}} <br>
+					 {{activity}} <br>
+					 {{sleep}} <br>
+					 {{medication}} <br>
+					 {{note}}
+
+						<button type="submit" id="BM-edit-btn" data-id="{{id}}"
+							class="btn text-dark form-control custom d-flex justify-content-center">
+							<span>
+								<i class="fas fa-edit"></i>
+							</span>
+							Edit Entry
+						</button>
+						<button type="submit" id="BM-delete-btn" data-id="{{id}}"
+							class=" deleteBtn btn text-dark form-control custom d-flex justify-content-center">
+							<span>
+								<i class="fas fa-trash"></i>
+							</span>
+							Delete Entry
+						</button>
+
+
+				</li>
+			</ul>
+
+			{{/each}}
+		</div>
+	</div>
+</div>
+
+
+{{/if}}

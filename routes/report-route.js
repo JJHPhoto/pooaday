@@ -13,34 +13,31 @@ router.get("/api/members", isAuthenticated, (req, res) => {
 });
 
 router.get("/myentry", isAuthenticated, (req, res) => {
-	Report.findAll({
-		where: {
-			UserId: req.user.id,
-		},
-	}).then((dbresults) => {
-		let resultsObj = dbresults.map((dbresult) => dbresult.toJSON());
-		let results = { Reports: resultsObj };
+  Report.findAll({
+    where: {
+      UserId: req.user.id,
+    },
+  })
+    .then((dbresults) => {
+      const resultsObj = dbresults.map((dbresult) => dbresult.toJSON());
+      const results = { Reports: resultsObj };
 
-		console.log(results, "ressrersresr");
-		///// getting something... getting arrays
-
-		res.render("report", results);
-	});
-});
-router.post("/api/members", isAuthenticated, (req,re)=>{
-    Report.create({
-        mood: req.body.mood,
-        water: req.body.water,
-        food: req.body.food,
-        activity: req.body.activity,
-        sleep: req.body.sleep,
-        medication: req.body.medication,
-        UserId: req.user.id,
-
-
-    }).then((result)=>{
-        res.json(result);
+      res.render("report", results);
     })
-})
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/api/members", isAuthenticated, (req, res) => {
+  req.body.UserId = req.user.id;
+  console.log(req.body);
+  Report.create(req.body)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 module.exports = router;
