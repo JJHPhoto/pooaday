@@ -42,7 +42,7 @@ module.exports = function (sequelize, DataTypes) {
     sleep: {
       type: DataTypes.STRING,
       validate: {
-        isIn: [["Very Little", "Little", "Moderate", "Good", "Great"]],
+        isIn: [["1", "2", "3", "4", "5"]],
       },
     },
     medication: {

@@ -28,7 +28,43 @@ router.get("/myentry", isAuthenticated, (req, res) => {
         UserId: req.user.id,
       },
     }).then((report) => {
-      const reportObj = report.map((report) => report.toJSON());
+      const reportObj = report.map((report) => {
+        switch (report.sleep) {
+          case "1":
+            report.sleep = "Very Little";
+            break;
+          case "2":
+            report.sleep = "Little";
+            break;
+          case "3":
+            report.sleep = "Moderate";
+            break;
+          case "4":
+            report.sleep = "Good";
+            break;
+          case "5":
+            report.sleep = "Very Good";
+            break;
+        }
+        switch (report.activity) {
+          case"1" :
+          report.activity ="Very little"
+          break;
+          case"2":
+          report.activity = "Little"
+          break;
+          case "3":
+          report.activity = "Moderate"
+          break;
+          case "4" :
+            report.activity = "Active"
+            break;
+            case "5" :
+              report.activity = "Vigorous"
+              break;
+        }
+        return report.toJSON();
+      });
       const results = { BMs: resultsObj, Reports: reportObj };
 
       //BMs to views

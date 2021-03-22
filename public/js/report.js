@@ -1,7 +1,5 @@
 /* eslint-disable quotes */
 /* eslint-disable no-unused-vars */
-
-const dlActivity = ["Very Little", "Light", "Moderate", "Active", "Vigorous"];
 const today = new Date();
 const convertedDate = convertDate(today);
 function convertDate() {
@@ -14,32 +12,16 @@ function convertDate() {
   return sYear + "-" + sMonth + "-" + sDate;
 }
 
-$("#sleepRange").change(
-  () => {
-    const s = "";
-    const value = $(this).val();
+$("#sleepRange").change(()=>{
 
-    if (value === 1) {
-      s = "Very Little";
-    } else if (value === 2) {
-      s = "Little";
-    } else if (value === 3) {
-      s = "Moderate";
-    } else if (value === 4) {
-      s = "Good";
-    } else if (value === 5) {
-      s = "Great";
-    }
+}),
 
-    $("#sleepEl").text($("#slider").val());
-  },
-
-  $("#activityRange").change(() => {
+$("#activityRange").change(() => {
     // 	// display clicked value
     const activityVal = $("input#activityRange").val();
 
     if (activityVal === "1") {
-      $("#resultActivity").html(`<p class ="text-muted"> Very Little >/p>`);
+      $("#resultActivity").html(`<p class ="text-muted"> Very Little </p>`);
     } else if (activityVal === "2") {
       $("#resultActivity").html(`<p class ="text-muted">  Light </p>`);
     } else if (activityVal === "3") {
@@ -51,7 +33,7 @@ $("#sleepRange").change(
     }
   }),
 
-  $("#addReport").on("click", () => {
+$("#addReport").on("click", () => {
     const pickedDate = $("#datepicker").val();
     let date;
     if (!pickedDate) {
@@ -63,10 +45,9 @@ $("#sleepRange").change(
     if (!date) {
       return false;
     }
-
-    const mood = $(".mood").val();
-    const water = $(".water").val();
-    const food = $(".food").val();
+    const mood = $(".mood").is(":checked").val();
+    const water = $(".water").is(":checked").val();
+    const food = $(".food").is(":checked").val();
     const activity = $("#activityRange").val();
     const sleep = $("#sleepRange").val();
     const medication = $("#exampleFormControlInput1").val();
@@ -76,7 +57,7 @@ $("#sleepRange").change(
       mood: mood,
       water: water,
       food: food,
-      activity: dlActivity,
+      activity: activity,
       sleep: sleep,
       medication: medication,
       note: note,
@@ -98,5 +79,14 @@ $("#sleepRange").change(
       console.log(res, "res");
       // location.reload();
     });
+  }),
+
+  $(".deleteReport").on("click", (event) => {
+    const id = $(event.target).attr("data-id");
+    $.ajax({
+      method: "DELETE",
+      url: "/api/members/" + id,
+    }).then(() => {
+      window.location.replace("/myentry");
+    });
   })
-);

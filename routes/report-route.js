@@ -40,4 +40,16 @@ router.post("/api/members", isAuthenticated, (req, res) => {
     });
 });
 
+router.delete("/api/members/:id", (req, res) => {
+  Report.destroy({
+    where: {
+      id: req.params.id,
+    },
+  }).then((report) => {
+    if (report) {
+      return res.json({ success: true });
+    }
+    res.status(500).json({ success: false });
+  });
+});
 module.exports = router;

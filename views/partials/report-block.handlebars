@@ -1,8 +1,14 @@
-<div class="">
+<div class="text-center">
+	<h1 class="text-center pt-4">My entry</h1>
+</div>
+<div class="row mt-5">
+
 	{{#if BMs}}
-	<h5 class="text-center pt-4">My entry</h5>
-	<div class="card col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto displayData" data-id="{{id}}">
+
+	<div class="card col-xl-4 col-lg-4 col-md-4  col-sm-6 mx-auto displayData shadow p-3 mb-5  rounded"
+		data-id="{{id}}">
 		<div class="card-body ">
+			<h3 class="text-center"> Bowel Movement Entry</h3>
 
 			{{#each BMs}}
 
@@ -39,17 +45,19 @@
 			{{/each}}
 		</div>
 	</div>
-</div>
+	{{!--
+</div> --}}
 
 
 {{/if}}
 
-<div class="">
+{{!-- <div class=""> --}}
 	{{#if Reports}}
-	<h5 class="text-center pt-4">My entry</h5>
-	<div class="card col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto displayData" data-id="{{id}}">
-		<div class="card-body ">
 
+	<div class="card col-xl-4 col-lg-4 col-md-4  col-sm-6 mx-auto displayData shadow p-3 mb-5  rounded"
+		data-id="{{id}}">
+		<div class="card-body ">
+			<h3 class="text-center"> Wellness Data Entry</h3>
 			{{#each Reports}}
 
 			<ul class="list-group list-group-flush ">
@@ -57,13 +65,13 @@
 					<span id="dateCard"><strong>Date: {{date}} <br> </strong></span>
 
 					<span>
-					Mood: {{mood}} <br>
-						 {{water}} <br>
-						 {{food}} <br>
-					 {{activity}} <br>
-					 {{sleep}} <br>
-					 {{medication}} <br>
-					 {{note}}
+						My mood was: {{mood}} <br>
+						Water Intake: {{water}} <br>
+						Food Intake: {{food}} <br>
+						Activity Level: {{activity}} <br>
+						Sleep: {{sleep }} <br>
+						Medication Intake: {{medication}} <br>
+						My Notes: {{note}}
 
 						<button type="submit" id="BM-edit-btn" data-id="{{id}}"
 							class="btn text-dark form-control custom d-flex justify-content-center">
@@ -73,7 +81,7 @@
 							Edit Entry
 						</button>
 						<button type="submit" id="BM-delete-btn" data-id="{{id}}"
-							class=" deleteBtn btn text-dark form-control custom d-flex justify-content-center">
+							class=" deleteReport btn text-dark form-control custom d-flex justify-content-center">
 							<span>
 								<i class="fas fa-trash"></i>
 							</span>
@@ -86,8 +94,5 @@
 
 			{{/each}}
 		</div>
-	</div>
+	</div>{{/if}}
 </div>
-
-
-{{/if}}
