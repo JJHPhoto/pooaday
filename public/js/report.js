@@ -45,9 +45,9 @@ $("#addReport").on("click", () => {
     if (!date) {
       return false;
     }
-    const mood = $(".mood").is(":checked").val();
-    const water = $(".water").is(":checked").val();
-    const food = $(".food").is(":checked").val();
+    const mood = $(".mood").val();
+    const water = $(".water").val();
+    const food = $(".food").val();
     const activity = $("#activityRange").val();
     const sleep = $("#sleepRange").val();
     const medication = $("#exampleFormControlInput1").val();
