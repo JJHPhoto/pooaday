@@ -2,24 +2,26 @@
 
 var fs = require("fs");
 var path = require("path");
-var Sequelize = require("sequelize");
+var {Sequelize} = require("sequelize");
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.js");
 var db = {};
 
-if (process.env[config.production.use_env_variable]) {
-  var sequelize = new Sequelize(
-    process.env[config.production.use_env_variable]
-  );
-} else {
-  var sequelize = new Sequelize(
-    config.development.database,
-    config.development.username,
-    config.development.password,
-    config.development
-  );
-}
+// const { Sequelize } = require('sequelize');
+
+const DB_NAME = process.env.DB_NAME;
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASS;
+const DB_INSTANCE = process.env.DB_INSTANCE;
+
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
+  host: `/cloudsql/${process.env.DB_INSTANCE}`,
+  dialect: 'mysql',
+  dialectOptions: {
+    socketPath: `/cloudsql/${DB_INSTANCE}`,
+  },
+});
 
 fs.readdirSync(__dirname)
   .filter(function (file) {
