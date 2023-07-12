@@ -1,49 +1,39 @@
-"use strict";
+const User = require("./user");
+const BM = require("./bm");
+const Report = require("./report");
 
-var fs = require("fs");
-var path = require("path");
-var {Sequelize} = require("sequelize");
-var basename = path.basename(module.filename);
-var env = process.env.NODE_ENV || "development";
-var config = require(__dirname + "/../config/config.js");
-var db = {};
-
-// const { Sequelize } = require('sequelize');
-
-const DB_NAME = process.env.DB_NAME;
-const DB_USER = process.env.DB_USER;
-const DB_PASS = process.env.DB_PASS;
-const DB_INSTANCE = process.env.DB_INSTANCE;
-
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
-  host: `/cloudsql/${process.env.DB_INSTANCE}`,
-  dialect: 'mysql',
-  dialectOptions: {
-    socketPath: `/cloudsql/${DB_INSTANCE}`,
-  },
+BM.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
 });
 
-fs.readdirSync(__dirname)
-  .filter(function (file) {
-    return (
-      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
-    );
-  })
-  .forEach(function (file) {
-    const model = require(path.join(__dirname, file))(
-      sequelize,
-      Sequelize.DataTypes
-    );
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(function (modelName) {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+User.hasMany(BM, {
+  foreignKey: "user_id",
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+Report.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
 
-module.exports = db;
+User.hasMany(Report, {
+  foreignKey: "user_id",
+});
+//associate report with BM through table 
+
+Report.belongsToMany(BM, {
+  through: "report_bm",
+  foreignKey: "report_id",
+});
+
+BM.belongsToMany(Report, {
+  through: "report_bm",
+  foreignKey: "bm_id",
+});
+
+
+
+
+
+
+module.exports = { User, BM, Report };

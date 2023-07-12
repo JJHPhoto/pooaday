@@ -1,5 +1,8 @@
-module.exports = function (sequelize, DataTypes) {
-  const Report = sequelize.define("Report", {
+const {Sequelize, Model, DataTypes} = require("sequelize");
+const sequelize = require("../config/config");
+  class Report extends Model {}
+  Report.init(
+    {
     date: {
       type: DataTypes.STRING,
       // allowNull: false,
@@ -51,10 +54,14 @@ module.exports = function (sequelize, DataTypes) {
     note: {
       type: DataTypes.TEXT,
     },
-  });
-  Report.associate = ({ Report, User, BM }) => {
-    Report.belongsTo(User);
-    Report.belongsToMany(BM, { through: "BmReport" });
-  };
-  return Report;
-};
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "Report",
+  }
+  );
+  module.exports = Report;
+

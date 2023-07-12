@@ -5,7 +5,7 @@ const { BM, Report } = require("../models");
 router.get("/api/bm", isAuthenticated, (req, res) => {
   BM.findAll({
     where: {
-      UserId: req.user.id,
+      user_id: req.user.id,
     },
     include: Report,
   }).then((bm) => {
@@ -17,7 +17,7 @@ router.get("/api/bm", isAuthenticated, (req, res) => {
 router.get("/myentry", isAuthenticated, (req, res) => {
   BM.findAll({
     where: {
-      UserId: req.user.id,
+     user_id: req.user.id,
     },
     include: Report,
   }).then((dbresults) => {
@@ -25,7 +25,7 @@ router.get("/myentry", isAuthenticated, (req, res) => {
 
     Report.findAll({
       where: {
-        UserId: req.user.id,
+      user_id: req.user.id,
       },
     }).then((report) => {
       const reportObj = report.map((report) => {

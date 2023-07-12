@@ -30,7 +30,7 @@ router.get("/login", (req, res) => {
 
 router.get("/members", isAuthenticated, async (req, res) => {
   const report = await db.Report.findAll({
-    where: { UserId: req.user.id },
+    where: { user_id: req.user.id },
     raw: true,
   });
   res.render("members", { report });

@@ -5,7 +5,7 @@ const { Report } = require("../models");
 router.get("/api/members", isAuthenticated, (req, res) => {
   Report.findAll({
     where: {
-      UserId: req.user.id,
+      user_id: req.user.id,
     },
   }).then((result) => {
     res.json(result);
@@ -15,7 +15,7 @@ router.get("/api/members", isAuthenticated, (req, res) => {
 router.get("/myentry", isAuthenticated, (req, res) => {
   Report.findAll({
     where: {
-      UserId: req.user.id,
+      user_id: req.user.id,
     },
   })
     .then((dbresults) => {
@@ -29,7 +29,7 @@ router.get("/myentry", isAuthenticated, (req, res) => {
     });
 });
 router.post("/api/members", isAuthenticated, (req, res) => {
-  req.body.UserId = req.user.id;
+  req.body.user_id = req.user.id;
   console.log(req.body);
   Report.create(req.body)
     .then((result) => {
